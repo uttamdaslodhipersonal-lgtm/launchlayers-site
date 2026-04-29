@@ -443,7 +443,7 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
             <div style="display:flex;gap:0.5rem;">
   <div class="cc-wrap" id="cc-wrap">
     <div class="cc-selected" id="cc-selected" onclick="toggleCC()">
-      <span id="cc-flag">🇺🇸</span>
+      <span id="cc-flag"><img src="https://flagcdn.com/16x12/us.png" width="16" height="12" style="border-radius:2px;"></span>
       <span id="cc-code">+1</span>
       <span class="cc-arrow">▼</span>
     </div>
@@ -841,7 +841,7 @@ document.addEventListener('keydown', function(e) {
 function renderCC(list){
   var html='';
   list.forEach(function(c,i){
-    html+='<div class="cc-option'+(i===0?' active':'')+'" onclick="selectCC(\''+c[0]+'\',\''+c[1]+'\',\''+c[2]+'\')">'+c[0]+' '+c[1]+' '+c[2]+'</div>';
+    html+='<div class="cc-option'+(i===0?' active':'')+'" onclick="selectCC(\''+c[1]+'\',\''+c[1]+'\',\''+c[2]+'\')"><img src="https://flagcdn.com/16x12/'+c[1].toLowerCase()+'.png" width="16" height="12" style="border-radius:2px;vertical-align:middle;"> '+c[1]+' '+c[2]+'</div>';
   });
   document.getElementById('cc-list').innerHTML=html;
 }
@@ -849,7 +849,7 @@ function filterCC(q){
   renderCC(countries.filter(function(c){return c[0].includes(q)||c[1].toLowerCase().includes(q.toLowerCase())||c[2].includes(q);}));
 }
 function selectCC(flag,code,dial){
-  document.getElementById('cc-flag').textContent=flag;
+  document.getElementById('cc-flag').innerHTML='<img src="https://flagcdn.com/16x12/'+code.toLowerCase()+'.png" width="16" height="12" style="border-radius:2px;">';
   document.getElementById('cc-code').textContent=dial;
   document.getElementById('cc-value').value=dial+'('+code+')';
   document.getElementById('cc-wrap').classList.remove('open');
