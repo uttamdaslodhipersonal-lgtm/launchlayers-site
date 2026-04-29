@@ -203,6 +203,18 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
 .ft-copy{font-size:0.75rem;color:var(--muted);}
 .ft-mail{font-size:0.75rem;color:var(--muted);text-decoration:none;transition:color 0.2s;}
 .ft-mail:hover{color:var(--text);}
+  .cc-wrap{position:relative;width:130px;flex-shrink:0;}
+.cc-selected{display:flex;align-items:center;gap:6px;padding:0.7rem 0.9rem;background:var(--bg);border:1px solid var(--border2);border-radius:10px;cursor:pointer;font-size:0.8125rem;color:var(--text);user-select:none;transition:border-color 0.2s;}
+.cc-selected:hover{border-color:rgba(255,255,255,0.3);}
+.cc-selected .cc-arrow{margin-left:auto;opacity:0.4;font-size:0.6rem;transition:transform 0.2s;}
+.cc-wrap.open .cc-arrow{transform:rotate(180deg);}
+.cc-dropdown{position:absolute;top:calc(100% + 6px);left:0;width:220px;background:#1a1a1a;border:1px solid var(--border2);border-radius:10px;z-index:999;max-height:240px;overflow-y:auto;scrollbar-width:thin;display:none;}
+.cc-wrap.open .cc-dropdown{display:block;}
+.cc-search{width:100%;background:#111;border:none;border-bottom:1px solid var(--border);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.75rem;padding:0.6rem 0.875rem;outline:none;}
+.cc-search::placeholder{color:rgba(240,237,230,0.3);}
+.cc-option{display:flex;align-items:center;gap:8px;padding:0.5rem 0.875rem;font-size:0.8rem;cursor:pointer;transition:background 0.15s;}
+.cc-option:hover{background:rgba(255,255,255,0.06);}
+.cc-option.active{background:rgba(255,255,255,0.04);}
 
 /* ── MODAL ── */
 .modal-overlay{
@@ -429,25 +441,18 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
           <div class="form-group">
             <label class="form-label" for="f-wa">WhatsApp Number<span class="form-opt">(optional)</span></label>
             <div style="display:flex;gap:0.5rem;">
-  <select class="form-input" name="whatsapp_code" style="width:110px;flex-shrink:0;padding-right:0.5rem;">
-    <option value="+91">🇮🇳 +91</option>
-    <option value="+1">🇺🇸 +1</option>
-    <option value="+44">🇬🇧 +44</option>
-    <option value="+61">🇦🇺 +61</option>
-    <option value="+971">🇦🇪 +971</option>
-    <option value="+65">🇸🇬 +65</option>
-    <option value="+60">🇲🇾 +60</option>
-    <option value="+92">🇵🇰 +92</option>
-    <option value="+880">🇧🇩 +880</option>
-    <option value="+1-CA">🇨🇦 +1</option>
-    <option value="+49">🇩🇪 +49</option>
-    <option value="+33">🇫🇷 +33</option>
-    <option value="+81">🇯🇵 +81</option>
-    <option value="+82">🇰🇷 +82</option>
-    <option value="+55">🇧🇷 +55</option>
-    <option value="+27">🇿🇦 +27</option>
-    <option value="+234">🇳🇬 +234</option>
-  </select>
+  <div class="cc-wrap" id="cc-wrap">
+    <div class="cc-selected" id="cc-selected" onclick="toggleCC()">
+      <span id="cc-flag">🇺🇸</span>
+      <span id="cc-code">+1</span>
+      <span class="cc-arrow">▼</span>
+    </div>
+    <div class="cc-dropdown" id="cc-dropdown">
+      <input class="cc-search" type="text" placeholder="Search country..." oninput="filterCC(this.value)" onclick="event.stopPropagation()">
+      <div id="cc-list"></div>
+    </div>
+    <input type="hidden" name="whatsapp_code" id="cc-value" value="+1">
+  </div>
   <input class="form-input" type="tel" id="f-wa" name="whatsapp_number" placeholder="98765 43210" autocomplete="tel" style="flex:1;">
 </div>
           </div>
@@ -819,6 +824,39 @@ document.getElementById('modal-overlay').addEventListener('click', function(e) {
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeModal();
 });
+  var countries=[
+  ["🇺🇸","US","+1"],["🇬🇧","GB","+44"],["🇦🇺","AU","+61"],["🇨🇦","CA","+1"],["🇳🇿","NZ","+64"],
+  ["🇮🇪","IE","+353"],["🇩🇪","DE","+49"],["🇫🇷","FR","+33"],["🇳🇱","NL","+31"],["🇧🇪","BE","+32"],
+  ["🇨🇭","CH","+41"],["🇦🇹","AT","+43"],["🇪🇸","ES","+34"],["🇮🇹","IT","+39"],["🇵🇹","PT","+351"],
+  ["🇸🇪","SE","+46"],["🇳🇴","NO","+47"],["🇩🇰","DK","+45"],["🇫🇮","FI","+358"],["🇵🇱","PL","+48"],
+  ["🇬🇷","GR","+30"],["🇹🇷","TR","+90"],["🇷🇺","RU","+7"],["🇺🇦","UA","+380"],["🇦🇪","AE","+971"],
+  ["🇸🇦","SA","+966"],["🇶🇦","QA","+974"],["🇮🇱","IL","+972"],["🇪🇬","EG","+20"],["🇿🇦","ZA","+27"],
+  ["🇳🇬","NG","+234"],["🇰🇪","KE","+254"],["🇬🇭","GH","+233"],["🇮🇳","IN","+91"],["🇵🇰","PK","+92"],
+  ["🇧🇩","BD","+880"],["🇱🇰","LK","+94"],["🇨🇳","CN","+86"],["🇯🇵","JP","+81"],["🇰🇷","KR","+82"],
+  ["🇸🇬","SG","+65"],["🇲🇾","MY","+60"],["🇮🇩","ID","+62"],["🇵🇭","PH","+63"],["🇹🇭","TH","+66"],
+  ["🇻🇳","VN","+84"],["🇲🇽","MX","+52"],["🇧🇷","BR","+55"],["🇦🇷","AR","+54"],["🇨🇱","CL","+56"],
+  ["🇨🇴","CO","+57"],["🇵🇪","PE","+51"],["🇯🇲","JM","+1"],["🇭🇰","HK","+852"],["🇲🇦","MA","+212"]
+];
+
+function renderCC(list){
+  var html='';
+  list.forEach(function(c,i){
+    html+='<div class="cc-option'+(i===0?' active':'')+'" onclick="selectCC(\''+c[0]+'\',\''+c[1]+'\',\''+c[2]+'\')">'+c[0]+' '+c[1]+' '+c[2]+'</div>';
+  });
+  document.getElementById('cc-list').innerHTML=html;
+}
+function filterCC(q){
+  renderCC(countries.filter(function(c){return c[0].includes(q)||c[1].toLowerCase().includes(q.toLowerCase())||c[2].includes(q);}));
+}
+function selectCC(flag,code,dial){
+  document.getElementById('cc-flag').textContent=flag;
+  document.getElementById('cc-code').textContent=dial;
+  document.getElementById('cc-value').value=dial+'('+code+')';
+  document.getElementById('cc-wrap').classList.remove('open');
+}
+function toggleCC(){document.getElementById('cc-wrap').classList.toggle('open');}
+document.addEventListener('click',function(e){if(!document.getElementById('cc-wrap').contains(e.target))document.getElementById('cc-wrap').classList.remove('open');});
+renderCC(countries);
 
 /* ── FORM SUBMISSION (Formspree AJAX) ── */
 document.getElementById('project-form').addEventListener('submit', async function(e) {
