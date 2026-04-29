@@ -403,10 +403,11 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
       <h2 class="modal-title">Tell us about<br>your project.</h2>
       <p class="modal-sub">Fill in the brief below — we'll get back to you within 24 hours.</p>
 
-      <form id="project-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <input type="hidden" name="_subject" value="New Project Brief — Launch Layers">
+      <form id="project-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="3800411d-7111-4b05-a787-c422ff144f7e">
+        <input type="hidden" name="subject" value="New Project Brief — Launch Layers">
         <!-- Honeypot spam field — do not remove -->
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+        <input type="checkbox" name="botcheck" style="display:none">
 
         <div class="form-row">
           <div class="form-group">
@@ -810,7 +811,8 @@ document.getElementById('project-form').addEventListener('submit', async functio
       body: new FormData(this),
       headers: { 'Accept': 'application/json' }
     });
-    if (res.ok) {
+    var data = await res.json();
+if (data.success) {
       document.getElementById('form-wrap').style.display = 'none';
       var s = document.getElementById('form-success');
       s.style.display = 'flex';
