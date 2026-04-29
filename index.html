@@ -428,7 +428,28 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
         <div class="form-row">
           <div class="form-group">
             <label class="form-label" for="f-wa">WhatsApp Number<span class="form-opt">(optional)</span></label>
-            <input class="form-input" type="tel" id="f-wa" name="whatsapp" placeholder="+1 555 000 0000" autocomplete="tel">
+            <div style="display:flex;gap:0.5rem;">
+  <select class="form-input" name="whatsapp_code" style="width:110px;flex-shrink:0;padding-right:0.5rem;">
+    <option value="+91">🇮🇳 +91</option>
+    <option value="+1">🇺🇸 +1</option>
+    <option value="+44">🇬🇧 +44</option>
+    <option value="+61">🇦🇺 +61</option>
+    <option value="+971">🇦🇪 +971</option>
+    <option value="+65">🇸🇬 +65</option>
+    <option value="+60">🇲🇾 +60</option>
+    <option value="+92">🇵🇰 +92</option>
+    <option value="+880">🇧🇩 +880</option>
+    <option value="+1-CA">🇨🇦 +1</option>
+    <option value="+49">🇩🇪 +49</option>
+    <option value="+33">🇫🇷 +33</option>
+    <option value="+81">🇯🇵 +81</option>
+    <option value="+82">🇰🇷 +82</option>
+    <option value="+55">🇧🇷 +55</option>
+    <option value="+27">🇿🇦 +27</option>
+    <option value="+234">🇳🇬 +234</option>
+  </select>
+  <input class="form-input" type="tel" id="f-wa" name="whatsapp_number" placeholder="98765 43210" autocomplete="tel" style="flex:1;">
+</div>
           </div>
           <div class="form-group">
             <label class="form-label" for="f-domain">Current Domain<span class="form-opt">(if you have one)</span></label>
