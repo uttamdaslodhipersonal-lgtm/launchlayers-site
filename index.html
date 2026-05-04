@@ -105,88 +105,116 @@ section.pad{padding:6.5rem 3.5rem;}
 
 /* ── MINI SITES ── */
 
-/* GYM */
-.mg{background:#0e0e0e;color:#fff;height:100%;padding:1rem 1.1rem;position:relative;overflow:hidden;font-family:'Plus Jakarta Sans',sans-serif;}
-.mg-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;}
-.mg-logo{font-weight:800;font-size:0.6rem;letter-spacing:0.12em;}
-.mg-links{display:flex;gap:0.625rem;}
-.mg-links span{font-size:0.45rem;color:rgba(255,255,255,0.35);letter-spacing:0.08em;text-transform:uppercase;}
-.mg-tag{font-size:0.42rem;letter-spacing:0.2em;color:#e03535;text-transform:uppercase;font-weight:700;margin-bottom:0.3rem;}
-.mg-h{font-weight:800;font-size:1.65rem;line-height:0.93;letter-spacing:-0.025em;margin-bottom:0.6rem;}
-.mg-sub{font-size:0.48rem;color:rgba(255,255,255,0.45);line-height:1.55;margin-bottom:0.7rem;max-width:120px;font-weight:300;}
-.mg-btn{background:#e03535;color:#fff;font-size:0.45rem;font-weight:700;letter-spacing:0.1em;padding:0.3rem 0.7rem;text-transform:uppercase;display:inline-block;border-radius:50px;}
-.mg-deco{position:absolute;right:0;top:0;bottom:0;width:44%;overflow:hidden;}
-.mg-deco::before{content:'';position:absolute;left:0;top:0;bottom:0;width:65%;background:linear-gradient(to right,#0e0e0e,transparent);z-index:1;}
-.mg-bars{display:flex;gap:4px;align-items:flex-end;height:100%;padding:1rem 0.75rem;justify-content:center;}
-.mg-bar{width:12px;background:linear-gradient(to top,#e03535,#450d0d);border-radius:1px 1px 0 0;}
+/* GYM - Iron Core */
+.mg{background:#0a0a0a;color:#fff;height:100%;padding:0;position:relative;overflow:hidden;}
+.mg-grid{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(224,53,53,0.04) 0,rgba(224,53,53,0.04) 1px,transparent 1px,transparent 36px),repeating-linear-gradient(rgba(224,53,53,0.04) 0,rgba(224,53,53,0.04) 1px,transparent 1px,transparent 36px);}
+.mg-nav{display:flex;justify-content:space-between;align-items:center;padding:0.55rem 0.875rem;border-bottom:1px solid rgba(255,255,255,0.05);position:relative;z-index:1;}
+.mg-logo{font-weight:900;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;}
+.mg-logo em{color:#e03535;font-style:normal;}
+.mg-links{display:flex;gap:0.5rem;}
+.mg-links span{font-size:0.38rem;color:rgba(255,255,255,0.28);letter-spacing:0.08em;text-transform:uppercase;}
+.mg-ncta{background:#e03535;color:#fff;font-size:0.36rem;font-weight:700;letter-spacing:0.08em;padding:0.18rem 0.5rem;text-transform:uppercase;}
+.mg-body{position:relative;z-index:1;padding:0.7rem 0.875rem;}
+.mg-etag{font-size:0.36rem;letter-spacing:0.2em;text-transform:uppercase;color:#e03535;font-weight:700;margin-bottom:0.45rem;display:flex;align-items:center;gap:0.4rem;}
+.mg-etag::before{content:'';width:0.75rem;height:1px;background:#e03535;}
+.mg-h{font-weight:900;font-size:1.75rem;line-height:0.87;letter-spacing:-0.01em;text-transform:uppercase;margin-bottom:0.45rem;}
+.mg-ghost{-webkit-text-stroke:1px rgba(255,255,255,0.1);color:transparent;}
+.mg-sub{font-size:0.4rem;color:rgba(255,255,255,0.35);line-height:1.55;margin-bottom:0.55rem;max-width:105px;font-weight:300;}
+.mg-btnr{background:#e03535;color:#fff;font-size:0.38rem;font-weight:700;letter-spacing:0.1em;padding:0.22rem 0.6rem;text-transform:uppercase;display:inline-block;}
+.mg-bars{position:absolute;right:0;bottom:0;top:2rem;width:40%;display:flex;align-items:flex-end;gap:4px;padding:0 0.75rem 0;}
+.mg-bars::before{content:'';position:absolute;left:0;top:0;bottom:0;width:55%;background:linear-gradient(to right,#0a0a0a,transparent);z-index:1;}
+.mg-bar{flex:1;background:linear-gradient(to top,#e03535,rgba(224,53,53,0.04));}
 
-/* DENTAL */
-.md{background:#f7f9fc;color:#0d1829;height:100%;font-family:'Plus Jakarta Sans',sans-serif;}
-.md-nav{background:#fff;padding:0.6rem 1rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eaecf0;}
-.md-logo{font-weight:700;font-size:0.6rem;color:#163a82;letter-spacing:0.04em;}
-.md-cta{background:#2563eb;color:#fff;font-size:0.42rem;padding:0.22rem 0.55rem;font-weight:600;letter-spacing:0.04em;border-radius:50px;}
-.md-hero{padding:0.9rem 1rem;display:flex;gap:0.7rem;}
-.md-txt{flex:1;}
-.md-badge{background:#eff6ff;color:#2563eb;font-size:0.42rem;letter-spacing:0.1em;padding:0.175rem 0.45rem;font-weight:600;text-transform:uppercase;margin-bottom:0.4rem;display:inline-block;border-radius:50px;}
-.md-h{font-weight:800;font-size:0.95rem;line-height:1.08;color:#0d1829;margin-bottom:0.35rem;letter-spacing:-0.01em;}
-.md-p{font-size:0.46rem;color:#64748b;line-height:1.55;margin-bottom:0.5rem;max-width:120px;font-weight:300;}
-.md-btn{background:#2563eb;color:#fff;font-size:0.42rem;padding:0.25rem 0.6rem;font-weight:600;display:inline-block;border-radius:50px;}
-.md-photo{width:88px;height:118px;background:linear-gradient(160deg,#c7deff 0%,#92bef8 100%);flex-shrink:0;position:relative;overflow:hidden;}
-.md-photo::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:56px;height:85px;background:linear-gradient(180deg,#9db8e8,#6494d4);border-radius:28px 28px 0 0;}
-.md-stats{display:flex;gap:0.5rem;padding:0 1rem;}
-.md-stat{flex:1;background:#fff;padding:0.35rem 0.5rem;border:1px solid #eaecf0;border-radius:8px;}
-.md-sn{font-weight:800;font-size:0.8rem;color:#2563eb;}
-.md-sl{font-size:0.4rem;color:#94a3b8;margin-top:1px;}
+/* DENTAL - BrightSmile */
+.md{background:#f0f6ff;color:#0d1829;height:100%;overflow:hidden;}
+.md-nav{background:#fff;padding:0.5rem 0.875rem;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #e8f0fe;}
+.md-logo{font-weight:900;font-size:0.55rem;color:#1e40af;letter-spacing:-0.01em;}
+.md-logo span{color:#3b82f6;}
+.md-cta{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font-size:0.36rem;padding:0.2rem 0.5rem;font-weight:800;border-radius:50px;}
+.md-hero{padding:0.75rem 0.875rem;display:grid;grid-template-columns:1fr 80px;gap:0.6rem;align-items:center;}
+.md-badge{background:#dbeafe;color:#1d4ed8;font-size:0.36rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;padding:0.2rem 0.5rem;border-radius:50px;display:inline-block;margin-bottom:0.45rem;}
+.md-h{font-weight:900;font-size:0.9rem;line-height:1.05;color:#0d1829;margin-bottom:0.3rem;letter-spacing:-0.02em;}
+.md-p{font-size:0.4rem;color:#475569;line-height:1.55;margin-bottom:0.45rem;font-weight:400;}
+.md-btn{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font-size:0.38rem;padding:0.22rem 0.55rem;font-weight:800;display:inline-block;border-radius:50px;}
+.md-img{height:90px;background:linear-gradient(145deg,#dbeafe,#bfdbfe);border-radius:16px;position:relative;overflow:hidden;}
+.md-img::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60%;height:78%;background:linear-gradient(180deg,#93c5fd,#3b82f6);border-radius:20px 20px 0 0;}
+.md-stats{display:flex;gap:0.4rem;padding:0 0.875rem;}
+.md-stat{flex:1;background:#fff;padding:0.3rem 0.4rem;border:2px solid #e8f0fe;border-radius:10px;text-align:center;}
+.md-sn{font-weight:900;font-size:0.72rem;color:#2563eb;line-height:1;}
+.md-sl{font-size:0.35rem;color:#94a3b8;margin-top:1px;font-weight:600;}
 
-/* FASHION */
-.mf{background:#f3ede2;color:#1a1a1a;height:100%;padding:0.9rem 1.1rem;font-family:'Plus Jakarta Sans',sans-serif;}
-.mf-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;padding-bottom:0.7rem;border-bottom:1px solid rgba(26,26,26,0.09);}
-.mf-logo{font-weight:700;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;}
-.mf-links{display:flex;gap:0.625rem;}
-.mf-links span{font-size:0.42rem;letter-spacing:0.08em;color:rgba(26,26,26,0.4);text-transform:uppercase;}
-.mf-body{display:grid;grid-template-columns:1fr 80px;gap:0.7rem;}
-.mf-season{font-size:0.42rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(26,26,26,0.38);margin-bottom:0.3rem;}
-.mf-h{font-weight:800;font-size:1.05rem;line-height:1;letter-spacing:-0.025em;margin-bottom:0.45rem;}
-.mf-h em{font-style:italic;font-weight:400;color:rgba(26,26,26,0.55);}
-.mf-p{font-size:0.44rem;color:rgba(26,26,26,0.5);line-height:1.55;margin-bottom:0.55rem;font-weight:300;}
-.mf-btn{border:0.75px solid #1a1a1a;font-size:0.42rem;padding:0.25rem 0.65rem;text-transform:uppercase;letter-spacing:0.1em;display:inline-block;font-weight:600;}
-.mf-right{display:flex;flex-direction:column;gap:0.45rem;}
-.mf-img-tall{background:#c8b898;flex:1;min-height:55px;position:relative;}
-.mf-img-tall::after{content:"SS'25";position:absolute;bottom:0.35rem;right:0.35rem;font-size:0.38rem;color:rgba(255,255,255,0.6);letter-spacing:0.06em;}
-.mf-img-sm{background:#b8a485;height:30px;}
+/* FASHION - Arc Studio */
+.mf{background:#f5f0e8;color:#1a1a1a;height:100%;overflow:hidden;}
+.mf-marquee{background:#1a1a1a;padding:0.3rem 0;overflow:hidden;border-top:1px solid rgba(26,26,26,0.08);border-bottom:1px solid rgba(26,26,26,0.08);}
+.mf-marquee-inner{display:flex;gap:0;animation:scroll 12s linear infinite;white-space:nowrap;}
+.mf-marquee-inner span{padding:0 1rem;font-size:0.32rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(245,240,232,0.45);}
+.mf-marquee-inner em{color:rgba(245,240,232,0.2);font-style:normal;padding:0 0.15rem;}
+.mf-nav{display:flex;justify-content:space-between;align-items:center;padding:0.55rem 0.875rem;border-bottom:1px solid rgba(26,26,26,0.08);}
+.mf-logo{font-weight:700;font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;}
+.mf-links{display:flex;gap:0.5rem;}
+.mf-links span{font-size:0.36rem;letter-spacing:0.08em;color:rgba(26,26,26,0.35);text-transform:uppercase;font-weight:500;}
+.mf-ncta{border:0.75px solid rgba(26,26,26,0.2);color:#1a1a1a;font-size:0.36rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;padding:0.18rem 0.5rem;}
+.mf-body{display:grid;grid-template-columns:1fr 1fr;height:calc(100% - 3.5rem);}
+.mf-left{padding:0.75rem 0.875rem;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid rgba(26,26,26,0.08);}
+.mf-season{font-size:0.34rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(26,26,26,0.35);margin-bottom:0.4rem;}
+.mf-h{font-weight:900;font-size:1.1rem;line-height:0.92;letter-spacing:-0.02em;margin-bottom:0.35rem;}
+.mf-hi{font-style:italic;font-weight:400;color:rgba(26,26,26,0.35);}
+.mf-sub{font-size:0.38rem;color:rgba(26,26,26,0.45);line-height:1.55;margin-bottom:0.45rem;font-weight:300;}
+.mf-btn{background:#1a1a1a;color:#f5f0e8;font-size:0.36rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.6rem;display:inline-block;}
+.mf-stats{display:flex;gap:1rem;padding-top:0.5rem;border-top:1px solid rgba(26,26,26,0.08);}
+.mf-stat span{display:block;font-size:0.32rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(26,26,26,0.32);margin-bottom:0.1rem;}
+.mf-stat strong{font-weight:700;font-size:0.55rem;}
+.mf-right{display:grid;grid-template-rows:2fr 1fr;gap:1px;background:rgba(26,26,26,0.08);}
+.mf-img1{background:#c8b898;position:relative;overflow:hidden;}
+.mf-img1::after{content:'New Arrival';position:absolute;bottom:0.4rem;left:0.4rem;font-size:0.3rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(26,26,26,0.4);}
+.mf-img2{background:#b8a485;}
 
-/* RESTAURANT */
-.mr{background:#08060303;height:100%;position:relative;overflow:hidden;font-family:'Plus Jakarta Sans',sans-serif;}
-.mr-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0a0704 60%,#1a1005);}
-.mr-glow{position:absolute;right:-30px;top:50%;transform:translateY(-50%);width:180px;height:180px;border-radius:50%;background:radial-gradient(#2a1a05,transparent 70%);opacity:0.8;}
-.mr-inner{position:relative;z-index:1;padding:1rem 1.1rem;color:#f5e9cc;}
-.mr-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.1rem;}
-.mr-logo{font-weight:700;font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:#c8a45e;}
-.mr-links{display:flex;gap:0.625rem;}
-.mr-links span{font-size:0.42rem;color:rgba(245,233,204,0.3);letter-spacing:0.08em;}
-.mr-tag{font-size:0.42rem;letter-spacing:0.2em;text-transform:uppercase;color:#c8a45e;margin-bottom:0.3rem;font-weight:600;}
-.mr-h{font-weight:800;font-size:1.45rem;line-height:0.95;letter-spacing:-0.025em;margin-bottom:0.5rem;}
-.mr-h em{color:#c8a45e;font-style:italic;font-weight:400;}
-.mr-p{font-size:0.46rem;color:rgba(245,233,204,0.45);line-height:1.55;margin-bottom:0.7rem;max-width:148px;font-weight:300;}
-.mr-btn{border:0.75px solid rgba(200,164,94,0.6);color:#c8a45e;font-size:0.42rem;padding:0.3rem 0.75rem;letter-spacing:0.1em;text-transform:uppercase;display:inline-block;}
-.mr-ring{position:absolute;right:-24px;bottom:-24px;width:130px;height:130px;border-radius:50%;border:1px solid rgba(200,164,94,0.1);}
-.mr-ring2{position:absolute;right:-44px;bottom:-44px;width:170px;height:170px;border-radius:50%;border:1px solid rgba(200,164,94,0.055);}
+/* RESTAURANT - Ember & Oak */
+.mr{background:#0c0806;height:100%;position:relative;overflow:hidden;}
+.mr-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(200,164,94,0.07),transparent 60%);}
+.mr-grain{position:absolute;inset:0;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.mr-inner{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;}
+.mr-nav{display:flex;justify-content:space-between;align-items:center;padding:0.55rem 0.875rem;border-bottom:1px solid rgba(200,164,94,0.1);}
+.mr-logo{font-weight:600;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:#c8a45e;}
+.mr-links{display:flex;gap:0.5rem;}
+.mr-links span{font-size:0.36rem;color:rgba(245,233,204,0.28);letter-spacing:0.08em;}
+.mr-ncta{border:0.75px solid rgba(200,164,94,0.3);color:#c8a45e;font-size:0.36rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;padding:0.18rem 0.5rem;}
+.mr-body{flex:1;padding:0.75rem 0.875rem;color:#f5e9cc;}
+.mr-etag{font-size:0.36rem;letter-spacing:0.22em;text-transform:uppercase;color:#c8a45e;font-weight:500;margin-bottom:0.5rem;display:flex;align-items:center;gap:0.4rem;}
+.mr-etag::before{content:'';width:0.75rem;height:1px;background:#c8a45e;}
+.mr-h{font-weight:300;font-size:1.45rem;line-height:0.92;letter-spacing:-0.01em;margin-bottom:0.45rem;}
+.mr-hi{font-style:italic;color:#c8a45e;}
+.mr-sub{font-size:0.4rem;color:rgba(245,233,204,0.4);line-height:1.55;margin-bottom:0.6rem;max-width:140px;font-weight:300;}
+.mr-btnp{background:#c8a45e;color:#0c0806;font-size:0.38rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.7rem;display:inline-block;}
+.mr-awards{display:flex;gap:1.5rem;margin-top:auto;padding-top:0.6rem;border-top:1px solid rgba(200,164,94,0.08);}
+.mr-aw span{display:block;font-size:0.3rem;letter-spacing:0.14em;text-transform:uppercase;color:#c8a45e;margin-bottom:0.1rem;font-weight:500;}
+.mr-aw strong{font-size:0.38rem;color:rgba(245,233,204,0.55);font-weight:400;font-style:italic;}
 
-/* REAL ESTATE */
-.me{background:#0f1520;color:#e8edf5;height:100%;font-family:'Plus Jakarta Sans',sans-serif;position:relative;overflow:hidden;}
-.me-bg{position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:radial-gradient(ellipse,rgba(37,99,235,0.15),transparent 70%);}
-.me-inner{position:relative;z-index:1;padding:0.9rem 1.1rem;}
-.me-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;}
-.me-logo{font-weight:700;font-size:0.6rem;letter-spacing:0.08em;color:#e8edf5;}
-.me-cta{border:0.75px solid rgba(255,255,255,0.2);color:#e8edf5;font-size:0.42rem;padding:0.2rem 0.5rem;letter-spacing:0.06em;}
-.me-tag{font-size:0.42rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(232,237,245,0.45);margin-bottom:0.3rem;}
-.me-h{font-weight:800;font-size:1.1rem;line-height:1;letter-spacing:-0.02em;margin-bottom:0.5rem;}
-.me-p{font-size:0.44rem;color:rgba(232,237,245,0.45);line-height:1.55;margin-bottom:0.6rem;max-width:138px;font-weight:300;}
-.me-cards{display:flex;gap:0.5rem;}
-.me-prop{flex:1;background:rgba(255,255,255,0.05);padding:0.4rem;border:0.75px solid rgba(255,255,255,0.07);border-radius:8px;}
-.me-prop-img{height:32px;background:linear-gradient(135deg,#1e3a5f,#2a5285);margin-bottom:0.3rem;border-radius:4px;}
-.me-prop-price{font-weight:700;font-size:0.6rem;margin-bottom:0.15rem;}
-.me-prop-loc{font-size:0.4rem;color:rgba(232,237,245,0.4);}
+/* REAL ESTATE - Nova Living */
+.me{background:#0c1324;color:#e8edf5;height:100%;overflow:hidden;position:relative;}
+.me-bg{position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:radial-gradient(ellipse,rgba(75,142,245,0.12),transparent 65%);}
+.me-inner{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;}
+.me-nav{display:flex;justify-content:space-between;align-items:center;padding:0.55rem 0.875rem;border-bottom:1px solid rgba(255,255,255,0.05);}
+.me-logo{font-weight:800;font-size:0.58rem;letter-spacing:0.04em;}
+.me-logo span{color:#4b8ef5;}
+.me-links{display:flex;gap:0.5rem;}
+.me-links span{font-size:0.36rem;color:rgba(232,237,245,0.3);letter-spacing:0.06em;text-transform:uppercase;font-weight:500;}
+.me-ncta{border:0.75px solid rgba(75,142,245,0.35);color:#4b8ef5;font-size:0.36rem;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;padding:0.18rem 0.5rem;border-radius:4px;}
+.me-body{flex:1;padding:0.7rem 0.875rem;}
+.me-etag{font-size:0.34rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(232,237,245,0.35);margin-bottom:0.45rem;font-weight:500;}
+.me-h{font-weight:800;font-size:1.05rem;line-height:0.95;letter-spacing:-0.02em;margin-bottom:0.3rem;}
+.me-hs{color:#4b8ef5;}
+.me-sub{font-size:0.38rem;color:rgba(232,237,245,0.38);line-height:1.55;margin-bottom:0.55rem;max-width:160px;font-weight:300;}
+.me-search{display:flex;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:8px;overflow:hidden;margin-bottom:0.5rem;}
+.me-sinput{flex:1;font-size:0.36rem;color:rgba(232,237,245,0.35);padding:0.3rem 0.5rem;}
+.me-sbtn{background:#4b8ef5;color:#fff;font-size:0.34rem;font-weight:700;padding:0.3rem 0.6rem;white-space:nowrap;}
+.me-props{display:grid;grid-template-columns:repeat(3,1fr);gap:0.4rem;}
+.me-prop{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:8px;overflow:hidden;}
+.me-prop-img{height:24px;position:relative;}
+.me-prop-tag{position:absolute;top:0.2rem;left:0.2rem;background:rgba(12,19,36,0.85);color:#e8edf5;font-size:0.28rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:0.1rem 0.3rem;border-radius:50px;}
+.me-prop-body{padding:0.3rem 0.4rem;}
+.me-prop-price{font-weight:800;font-size:0.55rem;letter-spacing:-0.01em;margin-bottom:0.1rem;}
+.me-prop-loc{font-size:0.3rem;color:rgba(232,237,245,0.35);font-weight:400;}
 
 /* ── SERVICES ── */
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
@@ -639,24 +667,27 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
     <div class="mcard">
       <div class="browser">
         <div class="bbar"><div class="dots"><span class="dr"></span><span class="dy"></span><span class="dg"></span></div></div>
-        <div class="bwin">
+       <div class="bwin">
           <div class="mg">
+            <div class="mg-grid"></div>
             <div class="mg-nav">
-              <span class="mg-logo">◈ IRON CORE</span>
-              <div class="mg-links"><span>Classes</span><span>About</span><span>Join</span></div>
+              <span class="mg-logo">Iron<em>Core</em></span>
+              <div class="mg-links"><span>Classes</span><span>Trainers</span><span>Join</span></div>
+              <span class="mg-ncta">Join Now</span>
             </div>
-            <div class="mg-tag">Train Different</div>
-            <div class="mg-h">FORGE<br>YOUR<br>LIMITS.</div>
-            <div class="mg-sub">Elite programs built for those who refuse to settle for average.</div>
-            <div class="mg-btn">Join Now →</div>
-            <div class="mg-deco">
-              <div class="mg-bars">
-                <div class="mg-bar" style="height:60%"></div>
-                <div class="mg-bar" style="height:85%"></div>
-                <div class="mg-bar" style="height:70%"></div>
-                <div class="mg-bar" style="height:100%"></div>
-                <div class="mg-bar" style="height:78%"></div>
-              </div>
+            <div class="mg-body">
+              <div class="mg-etag">Train Different · Est. 2018</div>
+              <div class="mg-h">FORGE<br>YOUR<br><span class="mg-ghost">LIMITS.</span></div>
+              <div class="mg-sub">Elite programs for those who refuse to settle for ordinary results.</div>
+              <div class="mg-btnr">Start Free Trial</div>
+            </div>
+            <div class="mg-bars">
+              <div class="mg-bar" style="height:40%"></div>
+              <div class="mg-bar" style="height:62%"></div>
+              <div class="mg-bar" style="height:50%"></div>
+              <div class="mg-bar" style="height:85%"></div>
+              <div class="mg-bar" style="height:70%"></div>
+              <div class="mg-bar" style="height:100%"></div>
             </div>
           </div>
         </div>
@@ -674,17 +705,17 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
         <div class="bwin">
           <div class="md">
             <div class="md-nav">
-              <span class="md-logo">✦ BrightSmile Dental</span>
+              <span class="md-logo">✦ Bright<span>Smile</span></span>
               <span class="md-cta">Book Appointment</span>
             </div>
             <div class="md-hero">
-              <div class="md-txt">
-                <div class="md-badge">Trusted by 2,400+ Patients</div>
+              <div>
+                <div class="md-badge">⭐ Trusted by 2,400+ Patients</div>
                 <div class="md-h">Your Perfect<br>Smile Starts<br>Here.</div>
-                <div class="md-p">Modern dentistry with gentle care — from cleanings to complete smile makeovers.</div>
+                <div class="md-p">Modern dentistry with gentle care — complete smile transformations.</div>
                 <div class="md-btn">Book Now →</div>
               </div>
-              <div class="md-photo"></div>
+              <div class="md-img"></div>
             </div>
             <div class="md-stats">
               <div class="md-stat"><div class="md-sn">98%</div><div class="md-sl">Satisfaction</div></div>
@@ -704,22 +735,34 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
     <div class="mcard">
       <div class="browser">
         <div class="bbar"><div class="dots"><span class="dr"></span><span class="dy"></span><span class="dg"></span></div></div>
-        <div class="bwin">
+       <div class="bwin">
           <div class="mf">
+            <div class="mf-marquee">
+              <div class="mf-marquee-inner">
+                <span>SS · 2025</span><em>·</em><span>New Collection</span><em>·</em><span>Made in Italy</span><em>·</em><span>Organic Materials</span><em>·</em><span>SS · 2025</span><em>·</em><span>New Collection</span><em>·</em><span>Made in Italy</span><em>·</em><span>Organic Materials</span><em>·</em>
+              </div>
+            </div>
             <div class="mf-nav">
-              <span class="mf-logo">ARC STUDIO</span>
-              <div class="mf-links"><span>Collection</span><span>About</span><span>Shop</span></div>
+              <span class="mf-logo">Arc Studio</span>
+              <div class="mf-links"><span>Collection</span><span>About</span><span>Stores</span></div>
+              <span class="mf-ncta">Shop Now</span>
             </div>
             <div class="mf-body">
               <div class="mf-left">
-                <div class="mf-season">SS · 2025 Collection</div>
-                <div class="mf-h">Wear the<br><em>Silence.</em></div>
-                <div class="mf-p">Minimal pieces crafted for those who let their presence speak first.</div>
-                <div class="mf-btn">Explore →</div>
+                <div>
+                  <div class="mf-season">SS · 2025 Collection</div>
+                  <div class="mf-h">Wear the<br><span class="mf-hi">Silence.</span></div>
+                  <div class="mf-sub">Minimal pieces crafted for those who let their presence speak first.</div>
+                  <div class="mf-btn">Shop Collection →</div>
+                </div>
+                <div class="mf-stats">
+                  <div class="mf-stat"><span>Pieces</span><strong>48</strong></div>
+                  <div class="mf-stat"><span>Made in</span><strong>Italy</strong></div>
+                </div>
               </div>
               <div class="mf-right">
-                <div class="mf-img-tall"></div>
-                <div class="mf-img-sm"></div>
+                <div class="mf-img1"></div>
+                <div class="mf-img2"></div>
               </div>
             </div>
           </div>
@@ -738,19 +781,24 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
         <div class="bwin">
           <div class="mr">
             <div class="mr-bg"></div>
-            <div class="mr-glow"></div>
+            <div class="mr-grain"></div>
             <div class="mr-inner">
               <div class="mr-nav">
-                <span class="mr-logo">EMBER &amp; OAK</span>
+                <span class="mr-logo">Ember &amp; Oak</span>
                 <div class="mr-links"><span>Menu</span><span>Reserve</span><span>About</span></div>
+                <span class="mr-ncta">Reserve</span>
               </div>
-              <div class="mr-tag">Est. 2019 · Fine Dining</div>
-              <div class="mr-h">Seasonal<br><em>Flavours,</em><br>Redefined.</div>
-              <div class="mr-p">Locally sourced ingredients, bold techniques, and an atmosphere crafted for memorable evenings.</div>
-              <div class="mr-btn">Reserve a Table →</div>
+              <div class="mr-body">
+                <div class="mr-etag">Est. 2019 · Fine Dining</div>
+                <div class="mr-h">Seasonal<br><span class="mr-hi">Flavours,</span><br>Redefined.</div>
+                <div class="mr-sub">Locally sourced ingredients crafted for evenings worth remembering.</div>
+                <div class="mr-btnp">Reserve a Table →</div>
+                <div class="mr-awards">
+                  <div class="mr-aw"><span>Recognition</span><strong>Michelin Guide</strong></div>
+                  <div class="mr-aw"><span>Wine List</span><strong>Award of Excellence</strong></div>
+                </div>
+              </div>
             </div>
-            <div class="mr-ring"></div>
-            <div class="mr-ring2"></div>
           </div>
         </div>
       </div>
@@ -769,22 +817,22 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
             <div class="me-bg"></div>
             <div class="me-inner">
               <div class="me-nav">
-                <span class="me-logo">◎ NOVA LIVING</span>
-                <span class="me-cta">View Properties</span>
+                <span class="me-logo">◎ NOVA<span>LIVING</span></span>
+                <div class="me-links"><span>Buy</span><span>Rent</span><span>About</span></div>
+                <span class="me-ncta">List Property</span>
               </div>
-              <div class="me-tag">Premium Real Estate</div>
-              <div class="me-h">Find Your<br>Dream Home.</div>
-              <div class="me-p">Curated luxury properties across the most sought-after locations. Move-in ready.</div>
-              <div class="me-cards">
-                <div class="me-prop">
-                  <div class="me-prop-img"></div>
-                  <div class="me-prop-price">$485,000</div>
-                  <div class="me-prop-loc">3BD · West Village, NY</div>
+              <div class="me-body">
+                <div class="me-etag">Premium Real Estate · New York</div>
+                <div class="me-h">Find Your<br><span class="me-hs">Dream Home.</span></div>
+                <div class="me-sub">Curated luxury properties across the most sought-after locations.</div>
+                <div class="me-search">
+                  <div class="me-sinput">Search by neighbourhood or property type...</div>
+                  <div class="me-sbtn">Search →</div>
                 </div>
-                <div class="me-prop">
-                  <div class="me-prop-img" style="background:linear-gradient(135deg,#1a3550,#253d6b)"></div>
-                  <div class="me-prop-price">$1.2M</div>
-                  <div class="me-prop-loc">4BD · Brooklyn Heights</div>
+                <div class="me-props">
+                  <div class="me-prop"><div class="me-prop-img" style="background:linear-gradient(135deg,#1e3a5f,#2a5285)"><div class="me-prop-tag">Sale</div></div><div class="me-prop-body"><div class="me-prop-price">$485K</div><div class="me-prop-loc">West Village, NY</div></div></div>
+                  <div class="me-prop"><div class="me-prop-img" style="background:linear-gradient(135deg,#1a3550,#253d6b)"><div class="me-prop-tag">Sale</div></div><div class="me-prop-body"><div class="me-prop-price">$1.2M</div><div class="me-prop-loc">Brooklyn Heights</div></div></div>
+                  <div class="me-prop"><div class="me-prop-img" style="background:linear-gradient(135deg,#162d4d,#1e3f6e)"><div class="me-prop-tag">Rent</div></div><div class="me-prop-body"><div class="me-prop-price">$6.5K/mo</div><div class="me-prop-loc">Tribeca Loft</div></div></div>
                 </div>
               </div>
             </div>
