@@ -459,7 +459,9 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
   section.pad{padding:3rem 1.25rem;}
   .cta-sec{padding:3.5rem 1.25rem;}
   footer{padding:1.75rem 1.25rem;}
+  .mobile-pricing{display:flex;}
 }
+.mobile-pricing{display:none;position:fixed;bottom:1.25rem;right:1.25rem;z-index:200;background:var(--text);color:#080808;padding:0.625rem 1.25rem;border-radius:50px;font-size:0.8rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;text-decoration:none;letter-spacing:0.01em;box-shadow:0 4px 20px rgba(0,0,0,0.4);}
 </style>
 </head>
 <body>
@@ -1115,5 +1117,6 @@ document.querySelectorAll('.svc, .proc-grid > div, .mcard').forEach(function(el)
   obs.observe(el);
 });
 </script>
+<a href="/pricing.html" class="mobile-pricing">Pricing →</a>
 </body>
 </html>
