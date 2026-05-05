@@ -404,7 +404,16 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
 .drawer-nav a:last-child{border-bottom:none;}
 .drawer-nav a:hover{color:var(--text);}
 .drawer-cta{background:var(--text);color:#080808;padding:0.875rem;font-size:0.875rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;border:none;border-radius:50px;cursor:pointer;margin-top:2rem;}
-@media(max-width:768px){.hamburger{display:flex;}.nav-cta{display:none;}}
+@media(max-width:768px){
+  .hamburger{display:flex;}
+  .nav-cta{display:none !important;}
+  .nav-links{display:none !important;}
+}
+@media(min-width:769px){
+  .hamburger{display:none !important;}
+  .drawer{display:none !important;}
+  .drawer-overlay{display:none !important;}
+}
   
 /* ── TABLET ── */
 @media(max-width:1024px){
