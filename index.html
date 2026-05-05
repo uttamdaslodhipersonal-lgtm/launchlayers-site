@@ -388,6 +388,23 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
 .mobile-nav a{display:inline-block;color:var(--muted);font-size:0.7rem;letter-spacing:0.08em;text-decoration:none;padding:0.3rem 0.875rem;border:1px solid var(--border);border-radius:50px;margin-right:0.5rem;transition:all 0.2s;}
 .mobile-nav a:hover{color:var(--text);border-color:var(--border2);}
 @media(max-width:768px){.mobile-nav{display:block;}.hero{padding-top:6.5rem !important;}}
+  .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:150;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(4px);}
+.drawer-overlay.active{opacity:1;pointer-events:all;}
+.drawer{position:fixed;top:0;right:-100%;width:75%;max-width:300px;height:100%;background:#111;z-index:200;display:flex;flex-direction:column;padding:1.75rem 1.5rem;transition:right 0.35s cubic-bezier(0.25,0.46,0.45,0.94);border-left:1px solid var(--border);}
+.drawer.open{right:0;}
+.drawer-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2.5rem;}
+.drawer-close{background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--muted);width:30px;height:30px;border-radius:50%;font-size:1.1rem;display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;}
+.drawer-nav{display:flex;flex-direction:column;gap:0;flex:1;}
+.drawer-nav a{color:var(--muted);text-decoration:none;font-size:1rem;font-weight:500;padding:1rem 0;border-bottom:1px solid var(--border);transition:color 0.2s;letter-spacing:0.01em;}
+.drawer-nav a:last-child{border-bottom:none;}
+.drawer-nav a:hover{color:var(--text);}
+.drawer-cta{background:var(--text);color:#080808;padding:0.875rem;font-size:0.875rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;border:none;border-radius:50px;cursor:pointer;margin-top:2rem;}
+@media(max-width:768px){.hamburger{display:flex;}.nav-cta{display:none;}}
   
 /* ── TABLET ── */
 @media(max-width:1024px){
@@ -568,6 +585,22 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
   <a href="#faq">FAQ</a>
   <a href="/pricing.html">Pricing</a>
 </div>
+  <!-- ── MOBILE DRAWER ── -->
+<div class="drawer-overlay" id="drawer-overlay" onclick="toggleDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-header">
+    <span class="logo-text">Launch Layers</span>
+    <button class="drawer-close" onclick="toggleDrawer()">×</button>
+  </div>
+  <nav class="drawer-nav">
+    <a href="#work" onclick="toggleDrawer()">Work</a>
+    <a href="#services" onclick="toggleDrawer()">Services</a>
+    <a href="#process" onclick="toggleDrawer()">Process</a>
+    <a href="#faq" onclick="toggleDrawer()">FAQ</a>
+    <a href="/pricing.html">Pricing</a>
+  </nav>
+  <button class="drawer-cta" onclick="toggleDrawer();openModal()">Get My Website →</button>
+</div>
 
 <!-- ── PREVIEW MODAL ── -->
 <div class="pv-overlay" id="pv-overlay">
@@ -601,6 +634,9 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
     <a href="/pricing.html">Pricing</a>
   </div>
   <button class="nav-cta" onclick="openModal()">Get My Website →</button>
+  <button class="hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- ── HERO ── -->
@@ -1081,6 +1117,17 @@ if (data.success) {
     btn.disabled = false;
   }
 });
+    
+    /* ── DRAWER ── */
+function toggleDrawer(){
+  var d=document.getElementById('drawer');
+  var o=document.getElementById('drawer-overlay');
+  var h=document.getElementById('hamburger');
+  d.classList.toggle('open');
+  o.classList.toggle('active');
+  h.classList.toggle('open');
+  document.body.classList.toggle('no-scroll');
+}
 
 /* ── DRAG-TO-SCROLL ── */
 var track = document.getElementById('track');
