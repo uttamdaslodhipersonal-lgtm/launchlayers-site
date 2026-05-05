@@ -393,10 +393,10 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .hamburger.open span:nth-child(2){opacity:0;}
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:150;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(4px);}
-.drawer-overlay.active{opacity:1;pointer-events:all;}
-.drawer{position:fixed;top:0;right:-100%;width:75%;max-width:300px;height:100%;background:#111;z-index:200;display:flex;flex-direction:column;padding:1.75rem 1.5rem;transition:right 0.35s cubic-bezier(0.25,0.46,0.45,0.94);border-left:1px solid var(--border);}
-.drawer.open{right:0;}
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:150;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(4px);visibility:hidden;}
+.drawer-overlay.active{opacity:1;pointer-events:all;visibility:visible;}
+.drawer{position:fixed;top:0;right:-100%;width:75%;max-width:300px;height:100%;background:#111;z-index:200;display:flex;flex-direction:column;padding:1.75rem 1.5rem;transition:right 0.35s cubic-bezier(0.25,0.46,0.45,0.94);border-left:1px solid var(--border);visibility:hidden;}
+.drawer.open{right:0;visibility:visible;}
 .drawer-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2.5rem;}
 .drawer-close{background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--muted);width:30px;height:30px;border-radius:50%;font-size:1.1rem;display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;}
 .drawer-nav{display:flex;flex-direction:column;gap:0;flex:1;}
@@ -408,11 +408,6 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
   .hamburger{display:flex;}
   .nav-cta{display:none !important;}
   .nav-links{display:none !important;}
-}
-@media(min-width:769px){
-  .hamburger{display:none !important;}
-  .drawer{display:none !important;}
-  .drawer-overlay{display:none !important;}
 }
   
 /* ── TABLET ── */
