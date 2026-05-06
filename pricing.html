@@ -206,12 +206,13 @@ footer{border-top:1px solid var(--border);padding:2rem 3.5rem;display:flex;align
     <button class="modal-close" id="modal-close-btn" aria-label="Close">×</button>
     <div id="form-wrap">
       <p class="modal-eye">New Project Enquiry</p>
-      <h2 class="modal-title">Let's Build<br>Your Website.</h2>
-      <p class="modal-sub">Fill it in once. We handle everything else.</p>
+      <h2 class="modal-title" id="modal-title">Let's Build<br>Your Website.</h2>
+      <p class="modal-sub" id="modal-sub">Fill it in once. We handle everything else.</p>
       <form id="project-form" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="3800411d-7111-4b05-a787-c422ff144f7e">
-        <input type="hidden" name="subject" value="New Project Brief — Launch Layers">
+        <input type="hidden" name="subject" id="f-subject" value="New Project Brief — Launch Layers">
         <input type="checkbox" name="botcheck" style="display:none">
+        <input type="hidden" name="package_selected" id="f-package" value="">
         <div class="form-row">
           <div class="form-group">
             <label class="form-label" for="f-name">Full Name<span class="form-req">*</span></label>
@@ -348,7 +349,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3.5rem;display:flex;align
         <div class="pf">2 rounds of revisions</div>
         <div class="pf">Domain connection & deployment</div>
       </div>
-      <button class="pkg-cta outline" onclick="openModal()">Get Started →</button>
+      <button class="pkg-cta outline" onclick="openModal('Landing Page','$600 – $800')">Get Started →</button>
     </div>
 
     <!-- BUSINESS -->
@@ -370,7 +371,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3.5rem;display:flex;align
         <div class="pf">2 rounds of revisions</div>
         <div class="pf">Domain connection & deployment</div>
       </div>
-      <button class="pkg-cta" onclick="openModal()">Get Started →</button>
+      <button class="pkg-cta" onclick="openModal('Business Website','$1,200 – $1,500')">Get Started →</button>
     </div>
 
     <!-- GROWTH -->
@@ -393,7 +394,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3.5rem;display:flex;align
         <div class="pf">2 rounds of revisions</div>
         <div class="pf">Domain connection & deployment</div>
       </div>
-      <button class="pkg-cta outline" onclick="openModal()">Get Started →</button>
+      <button class="pkg-cta outline" onclick="openModal('Growth Website','$1,800 – $2,500')">Get Started →</button>
     </div>
 
     <!-- ECOMMERCE -->
@@ -415,7 +416,7 @@ footer{border-top:1px solid var(--border);padding:2rem 3.5rem;display:flex;align
         <div class="pf">2 rounds of revisions</div>
         <div class="pf">Domain connection & deployment</div>
       </div>
-      <button class="pkg-cta outline" onclick="openModal()">Get Started →</button>
+      <button class="pkg-cta outline" onclick="openModal('Online Store','$2,800 – $3,800')">Get Started →</button>
     </div>
 
   </div>
@@ -507,7 +508,23 @@ footer{border-top:1px solid var(--border);padding:2rem 3.5rem;display:flex;align
 
 <script>
 /* ── MODAL ── */
-function openModal(){document.getElementById('modal-overlay').classList.add('active');document.body.classList.add('no-scroll');}
+function openModal(pkg,price){
+  var title=document.getElementById('modal-title');
+  var sub=document.getElementById('modal-sub');
+  if(pkg){
+    title.innerHTML='Let\'s Build Your<br>'+pkg+'.';
+    sub.textContent='Package: '+pkg+' · '+price+'. Fill it in and we\'ll be in touch within 24 hours.';
+    document.getElementById('f-package').value=pkg+' ('+price+')';
+    document.getElementById('f-subject').value='New Brief — '+pkg+' — Launch Layers';
+  }else{
+    title.innerHTML='Let\'s Build<br>Your Website.';
+    sub.textContent='Fill it in once. We handle everything else.';
+    document.getElementById('f-package').value='';
+    document.getElementById('f-subject').value='New Project Brief — Launch Layers';
+  }
+  document.getElementById('modal-overlay').classList.add('active');
+  document.body.classList.add('no-scroll');
+}
 function closeModal(){document.getElementById('modal-overlay').classList.remove('active');document.body.classList.remove('no-scroll');}
 document.getElementById('modal-close-btn').addEventListener('click',closeModal);
 document.getElementById('modal-overlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
