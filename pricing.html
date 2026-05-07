@@ -562,6 +562,15 @@ document.querySelectorAll('.edu-item,.pkg,.why-item,.g-item').forEach(function(e
   el.style.opacity='0';el.style.transform='translateY(20px)';
   obs.observe(el);
 });
+
+/* ── HERO NAV FIX ── */
+window.addEventListener('load',function(){
+  var nav=document.querySelector('nav');
+  var hero=document.querySelector('.hero');
+  if(nav&&hero){
+    hero.style.paddingTop=(nav.offsetHeight+24)+'px';
+  }
+});
 </script>
 </body>
 </html>
