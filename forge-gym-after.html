@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Forge Gym — Waterbury, Vermont</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Epilogue:ital,wght@0,300;0,400;0,500;0,700;0,800;0,900;1,300;1,700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --cream:#F1ECE2;
+  --white:#FAF8F3;
+  --dark:#0D0D0B;
+  --char:#181815;
+  --orange:#D4500A;
+  --muted:#7A7567;
+  --border:rgba(13,13,11,0.09);
+  --border-light:rgba(255,255,255,0.08);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--dark);font-family:'Outfit',sans-serif;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3.5rem;background:rgba(241,236,226,0.88);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo img{height:36px;width:auto;object-fit:contain;}
+.nav-logo-text{font-family:'Epilogue',sans-serif;font-weight:900;font-size:1rem;letter-spacing:-0.01em;color:var(--dark);}
+.nav-logo-text em{color:var(--orange);font-style:normal;}
+.nav-links{display:flex;gap:2.5rem;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.8rem;font-weight:500;transition:color 0.2s;}
+.nav-links a:hover{color:var(--dark);}
+.nav-cta{background:var(--dark);color:var(--cream);padding:0.6rem 1.5rem;font-weight:600;font-size:0.8rem;text-decoration:none;transition:opacity 0.2s;border-radius:50px;letter-spacing:-0.01em;}
+.nav-cta:hover{opacity:0.8;}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:55% 45%;padding-top:68px;}
+.hero-left{padding:5rem 3.5rem 4rem;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border);}
+.hero-pill{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(212,80,10,0.1);border:1px solid rgba(212,80,10,0.25);color:var(--orange);padding:0.4rem 1rem;border-radius:50px;font-size:0.72rem;font-weight:600;margin-bottom:2rem;width:fit-content;}
+.hero-pill::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--orange);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;}}
+h1{font-family:'Epilogue',sans-serif;font-weight:900;font-size:clamp(3.5rem,7vw,6.5rem);line-height:0.9;letter-spacing:-0.04em;margin-bottom:1.75rem;color:var(--dark);}
+h1 em{font-style:italic;color:var(--orange);}
+.hero-sub{font-size:1.05rem;color:var(--muted);max-width:400px;line-height:1.75;margin-bottom:1.25rem;font-weight:400;}
+.hero-proof{font-size:0.8rem;color:var(--muted);margin-bottom:2.75rem;display:flex;align-items:center;gap:0.5rem;font-weight:500;}
+.hero-proof::before{content:'★★★★★';font-size:0.75rem;color:var(--orange);}
+.hero-actions{display:flex;gap:0.875rem;align-items:center;flex-wrap:wrap;}
+.btn-primary{background:var(--dark);color:var(--cream);padding:0.9rem 2rem;font-family:'Outfit',sans-serif;font-weight:600;font-size:0.875rem;text-decoration:none;border-radius:50px;transition:opacity 0.2s;display:inline-flex;align-items:center;gap:0.5rem;letter-spacing:-0.01em;}
+.btn-primary:hover{opacity:0.82;}
+.btn-outline{border:1.5px solid rgba(13,13,11,0.2);color:var(--dark);padding:0.9rem 2rem;font-family:'Outfit',sans-serif;font-weight:600;font-size:0.875rem;text-decoration:none;border-radius:50px;transition:all 0.2s;display:inline-block;letter-spacing:-0.01em;}
+.btn-outline:hover{background:var(--dark);color:var(--cream);border-color:var(--dark);}
+
+/* HERO RIGHT — SLIDESHOW */
+.hero-right{position:relative;overflow:hidden;background:var(--dark);}
+.slideshow{position:absolute;inset:0;z-index:0;}
+.slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s ease-in-out;}
+.slide.active{opacity:1;}
+.slide-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,13,11,0.97) 0%,rgba(13,13,11,0.45) 50%,rgba(13,13,11,0.6) 100%);z-index:1;}
+.hero-ghost{position:absolute;font-family:'Epilogue',sans-serif;font-weight:900;font-size:clamp(6rem,14vw,11rem);color:rgba(255,255,255,0.05);letter-spacing:-0.06em;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;z-index:2;}
+.hero-right-bot{position:absolute;bottom:0;left:0;right:0;padding:2rem 2.5rem;z-index:3;}
+.live-tag{display:inline-flex;align-items:center;gap:0.5rem;background:var(--orange);color:#fff;padding:0.4rem 0.875rem;border-radius:50px;font-size:0.65rem;font-weight:700;letter-spacing:0.04em;margin-bottom:1.25rem;}
+.live-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:#fff;animation:blink 2s infinite;}
+.sstats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.07);}
+.sstat{background:rgba(13,13,11,0.6);backdrop-filter:blur(12px);padding:1.25rem 1.25rem;}
+.sstat-n{font-family:'Epilogue',sans-serif;font-weight:900;font-size:1.875rem;color:#FAF8F3;line-height:1;letter-spacing:-0.03em;}
+.sstat-l{font-size:0.6rem;color:rgba(255,255,255,0.4);margin-top:0.25rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;}
+
+/* SLIDE DOTS */
+.slide-dots{position:absolute;top:1.5rem;right:1.5rem;display:flex;gap:0.4rem;z-index:4;}
+.dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.25);cursor:pointer;transition:all 0.3s;}
+.dot.active{background:#fff;width:18px;border-radius:3px;}
+
+/* TRUST BAR */
+.trust-bar{background:var(--dark);border-bottom:1px solid var(--border-light);padding:1.1rem 3.5rem;display:flex;align-items:center;justify-content:space-between;overflow:hidden;}
+.trust-item{display:flex;align-items:center;gap:0.5rem;font-size:0.775rem;color:rgba(250,248,243,0.5);font-weight:400;white-space:nowrap;}
+.trust-item strong{color:rgba(250,248,243,0.9);font-weight:600;}
+.trust-divider{width:1px;height:18px;background:rgba(255,255,255,0.08);flex-shrink:0;}
+
+/* MARQUEE */
+.marquee-wrap{border-bottom:1px solid var(--border);padding:0.875rem 0;overflow:hidden;}
+.marquee-inner{display:flex;animation:scroll 30s linear infinite;white-space:nowrap;}
+.marquee-inner span{padding:0 2rem;font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
+.marquee-inner em{color:var(--orange);font-style:normal;padding:0 0.25rem;}
+@keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* STATEMENT */
+.statement{padding:5rem 3.5rem;border-bottom:1px solid var(--border);display:grid;grid-template-columns:240px 1fr;gap:6rem;align-items:center;}
+.statement-label{font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);}
+.statement-text{font-family:'Epilogue',sans-serif;font-weight:800;font-size:clamp(1.5rem,2.75vw,2.2rem);line-height:1.2;letter-spacing:-0.025em;}
+.statement-text em{font-style:italic;color:var(--orange);}
+
+/* FACILITIES */
+.facilities{padding:6rem 3.5rem;}
+.sec-label{font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);margin-bottom:0.875rem;}
+h2{font-family:'Epilogue',sans-serif;font-weight:900;font-size:clamp(2.5rem,4.5vw,3.75rem);line-height:0.92;letter-spacing:-0.035em;}
+.fac-subhead{font-size:1rem;color:var(--muted);margin-top:1rem;max-width:500px;font-weight:400;line-height:1.6;}
+.fac-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:3.5rem;}
+.fac{background:var(--cream);padding:2.75rem 2rem;cursor:default;transition:background 0.4s;}
+.fac:hover{background:var(--dark);}
+.fac:hover .fac-n,.fac:hover .fac-t{color:rgba(250,248,243,0.9);}
+.fac:hover .fac-d{color:rgba(250,248,243,0.45);}
+.fac:hover .fac-bar{background:var(--orange);}
+.fac-n{font-size:0.65rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;transition:color 0.4s;}
+.fac-bar{width:32px;height:2px;background:var(--border);margin-bottom:1.75rem;transition:background 0.4s;}
+.fac-t{font-family:'Epilogue',sans-serif;font-weight:800;font-size:1.25rem;letter-spacing:-0.02em;margin-bottom:0.875rem;transition:color 0.4s;}
+.fac-d{font-size:0.875rem;color:var(--muted);line-height:1.75;font-weight:400;transition:color 0.4s;}
+
+/* MEMBERSHIP */
+.membership{padding:6rem 3.5rem;background:var(--dark);}
+.membership h2{color:var(--white);}
+.membership .fac-subhead{color:rgba(255,255,255,0.4);}
+.mem-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3.5rem;}
+.mem-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:2.75rem 2.25rem;border-radius:16px;position:relative;}
+.mem-card.featured{background:rgba(212,80,10,0.08);border-color:rgba(212,80,10,0.25);}
+.mem-badge{position:absolute;top:1.75rem;right:1.75rem;background:var(--orange);color:#fff;padding:0.3rem 0.75rem;border-radius:50px;font-size:0.6rem;font-weight:700;letter-spacing:0.04em;}
+.mem-tag{font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.5rem;}
+.mem-name{font-family:'Epilogue',sans-serif;font-weight:900;font-size:1.75rem;color:var(--white);letter-spacing:-0.025em;margin-bottom:2rem;}
+.mem-div{height:1px;background:rgba(255,255,255,0.07);margin-bottom:1.75rem;}
+.mem-features{display:flex;flex-direction:column;gap:0.875rem;margin-bottom:2.25rem;}
+.mf{display:flex;gap:0.875rem;font-size:0.875rem;color:rgba(250,248,243,0.5);line-height:1.6;font-weight:400;align-items:flex-start;}
+.mf::before{content:'✓';color:var(--orange);flex-shrink:0;font-weight:700;font-size:0.8rem;}
+.mem-cta{display:block;text-align:center;background:var(--white);color:var(--dark);padding:0.9rem 2rem;font-family:'Outfit',sans-serif;font-weight:700;font-size:0.875rem;text-decoration:none;border-radius:50px;transition:opacity 0.2s;letter-spacing:-0.01em;}
+.mem-cta:hover{opacity:0.88;}
+.mem-cta.outline{background:transparent;border:1.5px solid rgba(255,255,255,0.15);color:rgba(250,248,243,0.6);}
+.mem-cta.outline:hover{border-color:rgba(255,255,255,0.35);color:var(--white);}
+
+/* HOURS */
+.hours{padding:6rem 3.5rem;background:var(--cream);border-top:1px solid var(--border);}
+.hours-layout{display:grid;grid-template-columns:1fr 1fr;gap:6rem;}
+.hours-table{margin-top:2.5rem;}
+.hr{display:flex;justify-content:space-between;align-items:center;padding:1rem 0;border-bottom:1px solid var(--border);}
+.hr:first-child{border-top:1px solid var(--border);}
+.hr-day{font-weight:600;font-size:0.875rem;}
+.hr-time{font-size:0.875rem;color:var(--muted);font-weight:400;}
+.always-pill{background:var(--orange);color:#fff;font-size:0.5rem;font-weight:700;letter-spacing:0.08em;padding:0.15rem 0.5rem;border-radius:50px;margin-left:0.5rem;}
+.contacts{margin-top:2.5rem;}
+.ci{display:flex;gap:1.25rem;padding:1.5rem 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.ci:first-child{border-top:1px solid var(--border);}
+.ci-n{font-family:'Epilogue',sans-serif;font-weight:900;font-size:0.6rem;letter-spacing:0.1em;color:var(--muted);min-width:20px;margin-top:0.2rem;}
+.ci-label{font-size:0.65rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:0.35rem;}
+.ci-val{font-family:'Epilogue',sans-serif;font-weight:800;font-size:1rem;letter-spacing:-0.02em;}
+
+/* CTA */
+.cta-sec{padding:8rem 3.5rem;background:var(--dark);position:relative;overflow:hidden;text-align:center;}
+.cta-ghost{position:absolute;font-family:'Epilogue',sans-serif;font-weight:900;font-size:clamp(7rem,20vw,17rem);color:rgba(255,255,255,0.025);top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;letter-spacing:-0.05em;pointer-events:none;}
+.cta-inner{position:relative;z-index:1;}
+.cta-label{font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);margin-bottom:1.5rem;}
+.cta-h{font-family:'Epilogue',sans-serif;font-weight:900;font-size:clamp(3rem,7vw,6rem);line-height:0.9;letter-spacing:-0.04em;color:var(--white);margin-bottom:1.5rem;}
+.cta-h em{font-style:italic;color:var(--orange);}
+.cta-sub{font-size:1rem;color:rgba(255,255,255,0.4);max-width:420px;margin:0 auto 2.5rem;line-height:1.75;font-weight:400;}
+.cta-urgency{font-size:0.78rem;color:rgba(255,255,255,0.25);margin-top:1.5rem;}
+.btn-orange{background:var(--orange);color:#fff;padding:1rem 2.5rem;font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;text-decoration:none;border-radius:50px;transition:opacity 0.2s;display:inline-flex;align-items:center;gap:0.5rem;letter-spacing:-0.01em;}
+.btn-orange:hover{opacity:0.88;}
+
+/* FOOTER */
+footer{padding:2rem 3.5rem;background:var(--dark);border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;}
+.ft-logo{display:flex;align-items:center;gap:8px;text-decoration:none;}
+.ft-logo img{height:28px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:0.7;}
+.ft-logo-text{font-family:'Epilogue',sans-serif;font-weight:900;font-size:0.875rem;color:var(--white);}
+.ft-logo-text em{color:var(--orange);font-style:normal;}
+.ft-copy{font-size:0.7rem;color:rgba(255,255,255,0.25);}
+.ft-links{display:flex;gap:2rem;}
+.ft-links a{font-size:0.72rem;color:rgba(255,255,255,0.3);text-decoration:none;font-weight:500;transition:color 0.2s;}
+.ft-links a:hover{color:var(--white);}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:1rem 1.25rem;}
+  .nav-links{display:none;}
+  .nav-logo img{height:28px;}
+  .hero{grid-template-columns:1fr;padding-top:64px;}
+  .hero-left{padding:3rem 1.5rem 2.5rem;}
+  .hero-right{min-height:320px;}
+  .hero-ghost{font-size:5rem;}
+  .trust-bar{display:none;}
+  .statement{grid-template-columns:1fr;gap:1.5rem;padding:3rem 1.5rem;}
+  .facilities,.membership,.hours,.cta-sec{padding:3.5rem 1.5rem;}
+  .fac-grid{grid-template-columns:1fr;}
+  .mem-grid{grid-template-columns:1fr;}
+  .hours-layout{grid-template-columns:1fr;gap:3rem;}
+  footer{flex-direction:column;gap:1rem;text-align:center;padding:1.5rem;}
+  .sstats{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:480px){
+  .hero-left{padding:2.5rem 1.25rem 2rem;}
+  .hero-actions{flex-direction:column;align-items:stretch;}
+  .btn-primary,.btn-outline{text-align:center;justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="forge gym logo.png" alt="The Forge Gym"
+      onerror="this.style.display='none'">
+    <span class="nav-logo-text">The <em>Forge</em> Gym</span>
+  </a>
+  <div class="nav-links">
+    <a href="#facility">Facility</a>
+    <a href="#membership">Membership</a>
+    <a href="#hours">Hours</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="https://clients.mindbodyonline.com/classic/ws?studioid=749786&stype=40" class="nav-cta" target="_blank">Start Free →</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-pill">Now Accepting New Members</div>
+    <h1>Stop Wishing.<br>Start <em>Forging.</em></h1>
+    <p class="hero-sub">Waterbury's most serious training facility. 3,300 sq ft, three dedicated rooms, and a community that shows up every single day.</p>
+    <p class="hero-proof">Trusted by hundreds of Vermont athletes</p>
+    <div class="hero-actions">
+      <a href="https://clients.mindbodyonline.com/classic/ws?studioid=749786&stype=40" class="btn-primary" target="_blank">
+        Claim Your Free Session →
+      </a>
+      <a href="#facility" class="btn-outline">See the Facility</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- SLIDESHOW -->
+    <div class="slideshow" id="slideshow">
+      <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80')"></div>
+      <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&q=80')"></div>
+      <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=1200&q=80')"></div>
+      <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=1200&q=80')"></div>
+      <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=1200&q=80')"></div>
+    </div>
+    <div class="slide-overlay"></div>
+    <div class="hero-ghost">FORGE</div>
+    <div class="slide-dots" id="dots">
+      <div class="dot active" onclick="goToSlide(0)"></div>
+      <div class="dot" onclick="goToSlide(1)"></div>
+      <div class="dot" onclick="goToSlide(2)"></div>
+      <div class="dot" onclick="goToSlide(3)"></div>
+      <div class="dot" onclick="goToSlide(4)"></div>
+    </div>
+    <div class="hero-right-bot">
+      <div class="live-tag">Open for Members 24/7</div>
+      <div class="sstats">
+        <div class="sstat"><div class="sstat-n">3,300</div><div class="sstat-l">Square Feet</div></div>
+        <div class="sstat"><div class="sstat-n">24/7</div><div class="sstat-l">Key Fob Access</div></div>
+        <div class="sstat"><div class="sstat-n">3</div><div class="sstat-l">Training Rooms</div></div>
+        <div class="sstat"><div class="sstat-n">FREE</div><div class="sstat-l">First PT Session</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="trust-item"><strong>✓ No long-term contracts</strong></div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><strong>✓ All classes included</strong> — zero add-ons</div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><strong>✓ Free PT session</strong> with every membership</div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><strong>✓ Infrared sauna</strong> — included</div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><strong>✓ 24/7 surveillance</strong> for your safety</div>
+</div>
+
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <span>24/7 Key Fob Access</span><em>·</em><span>All Classes Included</span><em>·</em><span>Free PT Session</span><em>·</em><span>Infrared Sauna</span><em>·</em><span>Concept 2 Rowers</span><em>·</em><span>Battle Ropes</span><em>·</em><span>Squat Racks</span><em>·</em><span>TRX Suspension</span><em>·</em><span>Ski Erg</span><em>·</em>
+    <span>24/7 Key Fob Access</span><em>·</em><span>All Classes Included</span><em>·</em><span>Free PT Session</span><em>·</em><span>Infrared Sauna</span><em>·</em><span>Concept 2 Rowers</span><em>·</em><span>Battle Ropes</span><em>·</em><span>Squat Racks</span><em>·</em><span>TRX Suspension</span><em>·</em><span>Ski Erg</span><em>·</em>
+  </div>
+</div>
+
+<div class="statement">
+  <div class="statement-label">Why Forge Works</div>
+  <div class="statement-text">Most gyms sell you a membership and disappear. We give you a free PT session, every class at no extra cost, and a community that <em>holds you accountable.</em></div>
+</div>
+
+<section class="facilities" id="facility">
+  <p class="sec-label">The Facility</p>
+  <h2>Three Rooms Built<br>for One Purpose.</h2>
+  <p class="fac-subhead">Every inch of The Forge is designed to get you a result — not to look good in a brochure.</p>
+  <div class="fac-grid">
+    <div class="fac">
+      <div class="fac-n">01 — Group Training</div>
+      <div class="fac-bar"></div>
+      <div class="fac-t">The Class Room</div>
+      <div class="fac-d">Large carpeted floor, heavy bag, battle ropes, TRX — plus every class in our schedule, free with your membership. Where the best sessions happen.</div>
+    </div>
+    <div class="fac">
+      <div class="fac-n">02 — Cardiovascular</div>
+      <div class="fac-bar"></div>
+      <div class="fac-t">The Cardio Room</div>
+      <div class="fac-d">Endurance treadmills, ellipticals, Concept 2 rowers, and Ski Erg. The cardio equipment serious athletes actually use.</div>
+    </div>
+    <div class="fac">
+      <div class="fac-n">03 — Strength Training</div>
+      <div class="fac-bar"></div>
+      <div class="fac-t">The Weight Room</div>
+      <div class="fac-d">Free weights to barbells. Full squat, bench, and deadlift setup with legendary machines. You'll feel the difference on day one.</div>
+    </div>
+  </div>
+</section>
+
+<section class="membership" id="membership">
+  <p class="sec-label">Membership</p>
+  <h2>Every Feature.<br>One Honest Price.</h2>
+  <p class="fac-subhead">No hidden fees. No upsells. Everything you need to make real progress is included from day one.</p>
+  <div class="mem-grid">
+    <div class="mem-card">
+      <div class="mem-tag">Try Before You Commit</div>
+      <div class="mem-name">Day Pass</div>
+      <div class="mem-div"></div>
+      <div class="mem-features">
+        <div class="mf">Full access to all three training rooms</div>
+        <div class="mf">Available Monday–Saturday, staffed hours</div>
+        <div class="mf">Perfect if you want to test the gym first</div>
+        <div class="mf">Not available Sundays — members only</div>
+      </div>
+      <a href="tel:8025859268" class="mem-cta outline">Call Heather — 802-585-9268</a>
+    </div>
+    <div class="mem-card featured">
+      <div class="mem-badge">Most Popular</div>
+      <div class="mem-tag">Full Access — Best Value</div>
+      <div class="mem-name">Full Membership</div>
+      <div class="mem-div"></div>
+      <div class="mem-features">
+        <div class="mf">24/7 key fob access — train at 5am or 11pm</div>
+        <div class="mf">Every single class included, no extra charge ever</div>
+        <div class="mf">1 FREE personal training session on signup</div>
+        <div class="mf">Infrared sauna — proven recovery, included</div>
+        <div class="mf">2 private changing rooms + 2 restrooms</div>
+        <div class="mf">24/7 video surveillance — total peace of mind</div>
+        <div class="mf">Gift cards available for friends & family</div>
+      </div>
+      <a href="https://clients.mindbodyonline.com/classic/ws?studioid=749786&stype=40" class="mem-cta" target="_blank">View Plans & Join Today →</a>
+    </div>
+  </div>
+</section>
+
+<section class="hours" id="hours">
+  <div class="hours-layout">
+    <div>
+      <p class="sec-label">We're Here</p>
+      <h2>Show Up.<br>We'll Be Ready.</h2>
+      <div class="hours-table">
+        <div class="hr"><span class="hr-day">Monday</span><span class="hr-time">11:00 AM – 7:00 PM</span></div>
+        <div class="hr"><span class="hr-day">Tuesday</span><span class="hr-time">11:00 AM – 6:00 PM</span></div>
+        <div class="hr"><span class="hr-day">Wednesday</span><span class="hr-time">11:00 AM – 7:00 PM</span></div>
+        <div class="hr"><span class="hr-day">Thursday</span><span class="hr-time">11:00 AM – 6:00 PM</span></div>
+        <div class="hr"><span class="hr-day">Friday</span><span class="hr-time">11:00 AM – 4:00 PM</span></div>
+        <div class="hr"><span class="hr-day">Saturday</span><span class="hr-time">10:00 AM – 12:00 PM</span></div>
+        <div class="hr"><span class="hr-day">Sunday</span><span class="hr-time">Members Only <span class="always-pill">24/7</span></span></div>
+      </div>
+    </div>
+    <div id="contact">
+      <p class="sec-label">Get In Touch</p>
+      <h2>Questions?<br>Just Ask.</h2>
+      <div class="contacts">
+        <div class="ci">
+          <div class="ci-n">01</div>
+          <div><div class="ci-label">Call or Text Heather directly</div><div class="ci-val">802-585-9268</div></div>
+        </div>
+        <div class="ci">
+          <div class="ci-n">02</div>
+          <div><div class="ci-label">Email</div><div class="ci-val">forgegymvt@gmail.com</div></div>
+        </div>
+        <div class="ci">
+          <div class="ci-n">03</div>
+          <div><div class="ci-label">Find Us</div><div class="ci-val">1930 Waterbury-Stowe Rd<br>Waterbury Center, VT 05677</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-sec">
+  <div class="cta-ghost">FORGE</div>
+  <div class="cta-inner">
+    <div class="cta-label">No Risk. No Commitment.</div>
+    <h2 class="cta-h">Your First Session<br>Is On <em>Us.</em></h2>
+    <p class="cta-sub">Every new membership comes with a complimentary one-on-one session with Heather. See exactly what your training should look like — before you spend a cent more.</p>
+    <a href="https://clients.mindbodyonline.com/classic/ws?studioid=749786&stype=40" class="btn-orange" target="_blank">Claim Your Free Session →</a>
+    <p class="cta-urgency">Membership spots are limited. Day passes available Mon–Sat during staffed hours.</p>
+  </div>
+</section>
+
+<footer>
+  <a href="#" class="ft-logo">
+    <img src="forge gym logo.png" alt="The Forge Gym"
+      onerror="this.style.display='none'">
+    <span class="ft-logo-text">The <em>Forge</em> Gym</span>
+  </a>
+  <span class="ft-copy">© 2025 The Forge Gym, LLC. Waterbury Center, Vermont.</span>
+  <div class="ft-links">
+    <a href="#facility">Facility</a>
+    <a href="#membership">Membership</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+var slides=document.querySelectorAll('.slide');
+var dots=document.querySelectorAll('.dot');
+var current=0;
+var timer;
+
+function goToSlide(n){
+  slides[current].classList.remove('active');
+  dots[current].classList.remove('active');
+  current=n;
+  slides[current].classList.add('active');
+  dots[current].classList.add('active');
+  clearInterval(timer);
+  timer=setInterval(nextSlide,3000);
+}
+
+function nextSlide(){
+  goToSlide((current+1)%slides.length);
+}
+
+timer=setInterval(nextSlide,3000);
+
+/* pause on hover */
+document.getElementById('slideshow').addEventListener('mouseenter',function(){clearInterval(timer);});
+document.getElementById('slideshow').addEventListener('mouseleave',function(){timer=setInterval(nextSlide,3000);});
+</script>
+</body>
+</html>
