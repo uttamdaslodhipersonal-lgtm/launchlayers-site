@@ -616,7 +616,7 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
           <label class="form-label" for="f-pkg">Package Interested In<span class="form-opt">(optional)</span></label>
           <select class="form-input" id="f-pkg" name="package_interested" style="cursor:pointer;">
             <option value="" disabled selected>— Select a package —</option>
-            <option value="Landing Page — $600–$800">Landing Page — $600–$800</option>
+            <option value="Landing Page — $800">Landing Page — $800</option>
             <option value="Business Website — $1,200–$1,500">Business Website — $1,200–$1,500</option>
             <option value="Growth Website — $1,800–$2,500">Growth Website — $1,800–$2,500</option>
             <option value="Online Store — $2,800–$3,800">Online Store — $2,800–$3,800</option>
@@ -1080,7 +1080,7 @@ document.querySelectorAll('.svc, .proc-grid > div, .mcard').forEach(function(el)
   var pkg=new URLSearchParams(window.location.search).get('pkg');
   if(!pkg)return;
   var pkgMap={
-    landing:'Landing Page — $600–$800',
+    landing:'Landing Page — $800',
     business:'Business Website — $1,200–$1,500',
     growth:'Growth Website — $1,800–$2,500',
     ecommerce:'Online Store — $2,800–$3,800'
@@ -1157,7 +1157,7 @@ document.querySelectorAll('.svc, .proc-grid > div, .mcard').forEach(function(el)
     addMsg(text,'user');
     input.value='';
     chips.innerHTML='';
-    var responses={'pricing':'Our packages start at $600 for a Landing Page, up to $3,800 for an Online Store. Full details at launchlayers.in/pricing.html','how long':'Most websites go live within 7–14 days from when we receive everything from you.','get started':'Fill out the project brief on this page — click "Get My Website" and complete the form. We\'ll reply within 24 hours.','contact':'Reach us at hello@launchlayers.in — we typically reply within a few hours.','revision':'Every project includes 2 rounds of revisions.','payment':'We require a 20% deposit to begin, with the rest due on delivery.','mobile':'Every site we build is mobile-first by default.','seo':'All our sites include SEO optimisation and Google Analytics setup.'};
+    var responses={'pricing':'Our packages start at $800 for a Landing Page, up to $3,800 for an Online Store. Full details at launchlayers.in/pricing.html','how long':'Most websites go live within 7–14 days from when we receive everything from you.','get started':'Fill out the project brief on this page — click "Get My Website" and complete the form. We\'ll reply within 24 hours.','contact':'Reach us at hello@launchlayers.in — we typically reply within a few hours.','revision':'Every project includes 2 rounds of revisions.','payment':'We require a 20% deposit to begin, with the rest due on delivery.','mobile':'Every site we build is mobile-first by default.','seo':'All our sites include SEO optimisation and Google Analytics setup.'};
     var reply="Not sure about that one — email us at hello@launchlayers.in and we'll get back to you!";
     var lower=text.toLowerCase();
     for(var key in responses){if(lower.includes(key)){reply=responses[key];break;}}
