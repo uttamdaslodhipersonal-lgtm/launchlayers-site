@@ -78,7 +78,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero::after{content:'';position:absolute;bottom:-200px;left:50%;transform:translateX(-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(255,255,255,0.025),transparent 70%);pointer-events:none;}
 .hero-eyebrow{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;display:flex;align-items:center;gap:0.875rem;opacity:0;animation:up 0.7s 0.1s forwards;}
 .hero-eyebrow::before{content:'';width:1.75rem;height:1px;background:var(--muted);}
-h1.hero-h{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(3.75rem,7.5vw,7.5rem);line-height:0.93;letter-spacing:-0.035em;max-width:880px;margin-bottom:2.5rem;opacity:0;animation:up 0.8s 0.22s forwards;}
+h1.hero-h{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(3.75rem,7.5vw,7.5rem);line-height:0.93;letter-spacing:-0.035em;max-width:880px;margin-bottom:2.5rem;}
 h1.hero-h em{font-style:italic;font-weight:400;color:var(--muted);}
 .hero-sub{font-size:1.075rem;color:var(--muted);max-width:460px;line-height:1.72;margin-bottom:2.5rem;font-weight:300;opacity:0;animation:up 0.8s 0.36s forwards;}
 .hero-actions{display:flex;gap:0.875rem;align-items:center;opacity:0;animation:up 0.8s 0.44s forwards;}
@@ -514,6 +514,11 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
   .ba-label-after{display:block;position:static;background:none;color:var(--text);font-size:1.25rem;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-0.01em;text-transform:uppercase;padding:0;border-radius:0;order:3;margin-top:1.25rem;margin-bottom:0.5rem;}
 }
 
+/* ── TEXT REVEAL ── */
+.reveal-wrap{overflow:hidden;display:block;}
+.reveal-line{display:block;transform:translateY(105%);transition:transform 0.9s cubic-bezier(0.16,1,0.3,1);}
+.reveal-line.revealed{transform:translateY(0);}
+  
 /* ── AI CHATBOT ── */
 .chat-btn{position:fixed;bottom:1.75rem;right:1.75rem;z-index:900;width:52px;height:52px;border-radius:50%;background:var(--text);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,0,0,0.4);transition:transform 0.2s,opacity 0.2s;}
 .chat-btn:hover{transform:scale(1.08);}
@@ -708,7 +713,11 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
 <!-- ── HERO ── -->
 <section class="hero">
   <p class="hero-eyebrow">Premium Web Design Studio</p>
-  <h1 class="hero-h">We Build Websites<br>That <em>Actually</em><br>Convert.</h1>
+  <h1 class="hero-h">
+  <span class="reveal-wrap"><span class="reveal-line" id="hl1">We Build Websites</span></span>
+  <span class="reveal-wrap"><span class="reveal-line" id="hl2">That <em>Actually</em></span></span>
+  <span class="reveal-wrap"><span class="reveal-line" id="hl3">Convert.</span></span>
+</h1>
   <p class="hero-sub">Modern, performance-first websites for gyms, clinics, brands, and businesses that are serious about growth.</p>
   <div class="hero-actions">
     <button class="btn-fill" onclick="openModal()">Get My Website →</button>
@@ -1190,6 +1199,44 @@ document.querySelectorAll('.svc, .proc-grid > div, .mcard').forEach(function(el)
 
   send.addEventListener('click',function(){handleInput(input.value);});
   input.addEventListener('keydown',function(e){if(e.key==='Enter')handleInput(input.value);});
+})();
+
+/* ── TEXT REVEAL ── */
+(function(){
+  var heroLines=['hl1','hl2','hl3'];
+  heroLines.forEach(function(id,i){
+    setTimeout(function(){
+      var el=document.getElementById(id);
+      if(el)el.classList.add('revealed');
+    },120+i*140);
+  });
+
+  function wrapReveal(el){
+    var wrap=document.createElement('span');
+    wrap.className='reveal-wrap';
+    wrap.style.display='block';
+    var inner=document.createElement('span');
+    inner.className='reveal-line';
+    while(el.firstChild){inner.appendChild(el.firstChild);}
+    wrap.appendChild(inner);
+    el.appendChild(wrap);
+    return inner;
+  }
+
+  var targets=document.querySelectorAll('.sec-eye,.sec-title,.cta-h');
+  var lines=[];
+  targets.forEach(function(el){lines.push(wrapReveal(el));});
+
+  var revObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        setTimeout(function(){e.target.classList.add('revealed');},60);
+        revObs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.25});
+
+  lines.forEach(function(line){revObs.observe(line);});
 })();
 
 /* ── BEFORE/AFTER SLIDER ── */
