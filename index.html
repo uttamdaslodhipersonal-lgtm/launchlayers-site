@@ -518,7 +518,7 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
 .chat-btn{position:fixed;bottom:1.75rem;right:1.75rem;z-index:900;width:52px;height:52px;border-radius:50%;background:var(--text);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,0,0,0.4);transition:transform 0.2s,opacity 0.2s;}
 .chat-btn:hover{transform:scale(1.08);}
 .chat-btn svg{transition:opacity 0.2s,transform 0.2s;}
-.chat-box{position:fixed;bottom:5.5rem;right:1.75rem;z-index:900;width:340px;max-height:560px;
+.chat-box{position:fixed;bottom:5.5rem;right:1.75rem;z-index:900;width:340px;max-height:560px;background:var(--bg2);border:1px solid var(--border2);border-radius:20px;display:flex;flex-direction:column;opacity:0;pointer-events:none;transform:translateY(12px) scale(0.97);transition:opacity 0.25s,transform 0.25s;}
 .chat-box.open{opacity:1;pointer-events:all;transform:translateY(0) scale(1);}
 .chat-head{padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:0.75rem;}
 .chat-avatar{width:34px;height:34px;border-radius:50%;background:var(--text);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
@@ -1182,7 +1182,7 @@ document.querySelectorAll('.svc, .proc-grid > div, .mcard').forEach(function(el)
     box.classList.toggle('open',open);
     if(open&&msgs.children.length===0){
       setTimeout(function(){
-        addMsg(addMsg("Hey 👋 thinking about a new website? Ask me anything — pricing, timelines, what we build, or how to get started.","bot");
+        addMsg("Hey 👋 thinking about a new website? Ask me anything — pricing, timelines, what we build, or how to get started.","bot");
         setChips(defaultChips);
       },200);
     }
