@@ -515,7 +515,7 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
 }
 
 /* ── AI CHATBOT ── */
-.chat-btn{position:fixed;bottom:1.75rem;right:1.75rem;z-index:900;width:52px;height:52px;border-radius:50%;background:var(--text);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,0,0,0.4);transition:transform 0.2s,opacity 0.2s;}
+.chat-btn{position:fixed;bottom:1.75rem;right:1.75rem;z-index:900;width:52px;height:52px;border-radius:50%;background:var(--text);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,0,0,0.4);transition:transform 0.2s,opacity 0.2s,bottom 0.35s ease;}
 .chat-btn:hover{transform:scale(1.08);}
 .chat-btn svg{transition:opacity 0.2s,transform 0.2s;}
 .chat-box{position:fixed;bottom:5.5rem;right:1.75rem;z-index:900;width:340px;max-height:560px;background:var(--bg2);border:1px solid var(--border2);border-radius:20px;display:flex;flex-direction:column;opacity:0;pointer-events:none;transform:translateY(12px) scale(0.97);transition:opacity 0.25s,transform 0.25s;}
@@ -1218,7 +1218,7 @@ document.querySelectorAll('.svc, .proc-grid > div, .mcard').forEach(function(el)
   document.addEventListener('touchmove',function(e){if(isDragging)setPos(e.touches[0].clientX);},{passive:true});
 })();
 </script>
-<div id="sticky-bar" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:800;background:#f0ede6;padding:0.875rem 1.25rem;align-items:center;justify-content:space-between;gap:0.75rem;border-top:1px solid rgba(0,0,0,0.08);">
+<div id="sticky-bar" style="position:fixed;bottom:0;left:0;right:0;z-index:800;background:#f0ede6;padding:0.875rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:0.75rem;border-top:1px solid rgba(0,0,0,0.08);transform:translateY(100%);transition:transform 0.35s ease;pointer-events:none;">
   <div>
     <strong style="display:block;font-size:0.8125rem;font-weight:700;color:#080808;line-height:1.35;">Get your website live in 2 weeks.</strong>
     <span style="font-size:0.7rem;color:rgba(8,8,8,0.5);">From $800 · No commitment</span>
@@ -1228,9 +1228,34 @@ document.querySelectorAll('.svc, .proc-grid > div, .mcard').forEach(function(el)
 <script>
 (function(){
   var bar=document.getElementById('sticky-bar');
+  var chatBtn=document.getElementById('chat-btn');
+  var barH=64;
+  var visible=false;
+  function show(){
+    if(visible)return;
+    visible=true;
+    bar.style.transform='translateY(0)';
+    bar.style.pointerEvents='all';
+    if(window.innerWidth<=480){
+      chatBtn.style.bottom=(1.25*16+barH)+'px';
+    } else {
+      chatBtn.style.bottom=(1.75*16+barH)+'px';
+    }
+  }
+  function hide(){
+    if(!visible)return;
+    visible=false;
+    bar.style.transform='translateY(100%)';
+    bar.style.pointerEvents='none';
+    if(window.innerWidth<=480){
+      chatBtn.style.bottom='1.25rem';
+    } else {
+      chatBtn.style.bottom='1.75rem';
+    }
+  }
   window.addEventListener('scroll',function(){
-    if(window.innerWidth>768)return;
-    if(window.scrollY>400){bar.style.display='flex';}
+    if(window.innerWidth>768){hide();return;}
+    if(window.scrollY>400){show();}else{hide();}
   });
 })();
 </script>
