@@ -518,7 +518,7 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
 .chat-btn{position:fixed;bottom:1.75rem;right:1.75rem;z-index:900;width:52px;height:52px;border-radius:50%;background:var(--text);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,0,0,0.4);transition:transform 0.2s,opacity 0.2s;}
 .chat-btn:hover{transform:scale(1.08);}
 .chat-btn svg{transition:opacity 0.2s,transform 0.2s;}
-.chat-box{position:fixed;bottom:5.5rem;right:1.75rem;z-index:900;width:340px;max-height:520px;background:#141414;border:1px solid var(--border2);border-radius:20px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,0.6);opacity:0;pointer-events:none;transform:translateY(16px) scale(0.97);transition:opacity 0.25s,transform 0.25s;}
+.chat-box{position:fixed;bottom:5.5rem;right:1.75rem;z-index:900;width:340px;max-height:560px;
 .chat-box.open{opacity:1;pointer-events:all;transform:translateY(0) scale(1);}
 .chat-head{padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:0.75rem;}
 .chat-avatar{width:34px;height:34px;border-radius:50%;background:var(--text);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
@@ -1131,7 +1131,7 @@ document.querySelectorAll('.svc, .proc-grid > div, .mcard').forEach(function(el)
   var input=document.getElementById('chat-input');
   var send=document.getElementById('chat-send');
   var open=false;
-  var defaultChips=['Pricing','How long?','Get started','Contact us'];
+  var defaultChips=['What do you build?','Pricing?','How fast?','See examples','Get started','Do you redesign?','SEO included?','Revisions?'];
 
   function addMsg(text,type){
     var d=document.createElement('div');
@@ -1157,7 +1157,20 @@ document.querySelectorAll('.svc, .proc-grid > div, .mcard').forEach(function(el)
     addMsg(text,'user');
     input.value='';
     chips.innerHTML='';
-    var responses={'pricing':'Our packages start at $800 for a Landing Page, up to $3,800 for an Online Store. Full details at launchlayers.in/pricing.html','how long':'Most websites go live within 7–14 days from when we receive everything from you.','get started':'Fill out the project brief on this page — click "Get My Website" and complete the form. We\'ll reply within 24 hours.','contact':'Reach us at hello@launchlayers.in — we typically reply within a few hours.','revision':'Every project includes 2 rounds of revisions.','payment':'We require a 20% deposit to begin, with the rest due on delivery.','mobile':'Every site we build is mobile-first by default.','seo':'All our sites include SEO optimisation and Google Analytics setup.'};
+    var responses={
+  'what do you build':      'We build high-converting websites for gyms, dental clinics, restaurants, fashion brands, real estate agencies, and e-commerce stores. Every site is custom — no templates.',
+  'pricing':                'Landing Page from $800 · Business Website $1,200–$1,500 · Growth Website $1,800–$2,500 · Online Store $2,800–$3,800. Full breakdown at launchlayers.in/pricing.html',
+  'how fast':               'Most sites go live in 7–14 days once we have your content. We move quickly — and we\'ll always give you a clear timeline before we start.',
+  'see examples':           'Scroll up and hover over the mockup cards — you can preview live demos of sites we\'ve built for gyms, dental clinics, restaurants, fashion brands, and real estate agencies.',
+  'revision':               'Every project includes 2 rounds of revisions. We stay closely aligned throughout so changes are usually minimal.',
+  'payment':                'We take a 20% deposit to kick things off. The rest is due on delivery — no surprises.',
+  'seo':                    'Every site includes on-page SEO optimisation, fast load speeds, and Google Analytics setup out of the box.',
+  'mobile':                 'Every site is mobile-first by default — looks sharp on phones, tablets, and desktops.',
+  'get started':            'Click "Get My Website" at the top of the page, fill in the brief, and we\'ll reply within 24 hours.',
+  'contact':                'Email us at hello@launchlayers.in — we typically reply within a few hours.',
+  'redesign':               'Absolutely. Redesigns are one of our most common projects. If your current site isn\'t converting, we\'ll rebuild it from scratch.',
+  'do you do maintenance':  'Yes — we offer post-launch support packages for edits, updates, and technical maintenance. Just ask.'
+};
     var reply="Not sure about that one — email us at hello@launchlayers.in and we'll get back to you!";
     var lower=text.toLowerCase();
     for(var key in responses){if(lower.includes(key)){reply=responses[key];break;}}
@@ -1169,7 +1182,7 @@ document.querySelectorAll('.svc, .proc-grid > div, .mcard').forEach(function(el)
     box.classList.toggle('open',open);
     if(open&&msgs.children.length===0){
       setTimeout(function(){
-        addMsg("Hey 👋 I'm the Launch Layers assistant. Ask me anything about our services, pricing, or process.","bot");
+        addMsg(addMsg("Hey 👋 thinking about a new website? Ask me anything — pricing, timelines, what we build, or how to get started.","bot");
         setChips(defaultChips);
       },200);
     }
