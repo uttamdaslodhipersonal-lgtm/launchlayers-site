@@ -1218,5 +1218,21 @@ document.querySelectorAll('.svc, .proc-grid > div, .mcard').forEach(function(el)
   document.addEventListener('touchmove',function(e){if(isDragging)setPos(e.touches[0].clientX);},{passive:true});
 })();
 </script>
+<div id="sticky-bar" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:800;background:#f0ede6;padding:0.875rem 1.25rem;align-items:center;justify-content:space-between;gap:0.75rem;border-top:1px solid rgba(0,0,0,0.08);">
+  <div>
+    <strong style="display:block;font-size:0.8125rem;font-weight:700;color:#080808;line-height:1.35;">Get your website live in 2 weeks.</strong>
+    <span style="font-size:0.7rem;color:rgba(8,8,8,0.5);">From $800 · No commitment</span>
+  </div>
+  <button onclick="openModal()" style="background:#080808;color:#f0ede6;border:none;padding:0.625rem 1.125rem;border-radius:50px;font-size:0.8rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;white-space:nowrap;flex-shrink:0;">Get Started →</button>
+</div>
+<script>
+(function(){
+  var bar=document.getElementById('sticky-bar');
+  window.addEventListener('scroll',function(){
+    if(window.innerWidth>768)return;
+    if(window.scrollY>400){bar.style.display='flex';}
+  });
+})();
+</script>
 </body>
 </html>
