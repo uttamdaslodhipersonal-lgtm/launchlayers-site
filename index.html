@@ -93,7 +93,7 @@ h1.hero-h em{font-style:italic;font-weight:400;color:var(--muted);}
 
 /* ── MARQUEE ── */
 .marquee-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:0.9rem 0;overflow:hidden;background:var(--bg2);}
-.marquee-inner{display:flex;gap:0;animation:scroll 30s linear infinite;white-space:nowrap;}
+.marquee-inner{display:flex;gap:0;animation:scroll 30s linear infinite;white-space:nowrap;will-change:transform;}
 .marquee-inner span{padding:0 2.25rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);}
 .marquee-inner .sep{color:rgba(255,255,255,0.25);font-size:0.9rem;padding:0 0.25rem;}
 @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
