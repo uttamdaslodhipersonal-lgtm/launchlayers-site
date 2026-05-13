@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://unpkg.com/phosphor-icons"></script>
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -270,8 +271,7 @@ footer{border-top:1px solid var(--border);padding:2.25rem 3.5rem;display:flex;al
 .faq-item:first-child{border-top:1px solid var(--border);}
 .faq-q{display:flex;justify-content:space-between;align-items:center;gap:1rem;}
 .faq-q span{font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:0.9375rem;letter-spacing:-0.01em;}
-.faq-icon{width:22px;height:22px;flex-shrink:0;border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:var(--muted);transition:all 0.2s;}
-.faq-item.open .faq-icon{background:var(--text);color:#080808;border-color:var(--text);}
+.faq-icon{width:22px;height:22px;flex-shrink:0;border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all 0.2s;}.faq-item.open .faq-icon{background:var(--text);color:#080808;border-color:var(--text);}
 .faq-a{font-size:0.8125rem;color:var(--muted);line-height:1.75;font-weight:300;overflow:hidden;}
 @media(max-width:768px){.faq-q span{font-size:0.875rem;}}
   .cc-wrap{position:relative;width:130px;flex-shrink:0;}
@@ -747,35 +747,35 @@ nav.nav-ready{opacity:1;}
   <h2 class="sec-title">Common Questions,<br>Honest Answers.</h2>
   <div class="faq-grid">
     <div class="faq-item">
-      <div class="faq-q"><span>How long does a website take to build?</span><div class="faq-icon">+</div></div>
+      <div class="faq-q"><span>How long does a website take to build?</span><div class="faq-icon"><ph-plus weight="light" style="font-size:12px;"></ph-plus></div></div>
       <div class="faq-a">Most projects go live within 7–14 days from the moment we receive everything we need from you. More complex builds may take a little longer — we'll always give you a clear timeline upfront.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q"><span>Do I need to provide the content?</span><div class="faq-icon">+</div></div>
+      <div class="faq-q"><span>Do I need to provide the content?</span><div class="faq-icon"><ph-plus weight="light" style="font-size:12px;"></ph-plus></div></div>
       <div class="faq-a">We'll guide you on exactly what's needed — logo, images, and any key text. If you need help with copy, just let us know and we can assist.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q"><span>Will my website work on mobile?</span><div class="faq-icon">+</div></div>
+      <div class="faq-q"><span>Will my website work on mobile?</span><div class="faq-icon"><ph-plus weight="light" style="font-size:12px;"></ph-plus></div></div>
       <div class="faq-a">Every site we build is mobile-first by default. It will look and perform great on phones, tablets, and desktops.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q"><span>How many revisions do I get?</span><div class="faq-icon">+</div></div>
+      <div class="faq-q"><span>How many revisions do I get?</span><div class="faq-icon"><ph-plus weight="light" style="font-size:12px;"></ph-plus></div></div>
       <div class="faq-a">Every project includes 2 rounds of revisions. We work closely with you throughout the process so by the time we reach review, we're already aligned on the direction.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q"><span>Do you offer ongoing maintenance?</span><div class="faq-icon">+</div></div>
+      <div class="faq-q"><span>Do you offer ongoing maintenance?</span><div class="faq-icon"><ph-plus weight="light" style="font-size:12px;"></ph-plus></div></div>
       <div class="faq-a">Yes — we offer post-launch support packages for updates, edits, and technical maintenance. Just ask and we'll put together a plan that suits your needs.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q"><span>What do you need from me to get started?</span><div class="faq-icon">+</div></div>
+      <div class="faq-q"><span>What do you need from me to get started?</span><div class="faq-icon"><ph-plus weight="light" style="font-size:12px;"></ph-plus></div></div>
       <div class="faq-a">Just fill out the project brief using the form on this page. We'll review it and get back to you within 24 hours to discuss next steps.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q"><span>Can you redesign my existing website?</span><div class="faq-icon">+</div></div>
+      <div class="faq-q"><span>Can you redesign my existing website?</span><div class="faq-icon"><ph-plus weight="light" style="font-size:12px;"></ph-plus></div></div>
       <div class="faq-a">Absolutely — redesigns are one of our most common projects. Whether your site looks outdated or just isn't converting, we can rebuild it from the ground up.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q"><span>How does payment work?</span><div class="faq-icon">+</div></div>
+      <div class="faq-q"><span>How does payment work?</span><div class="faq-icon"><ph-plus weight="light" style="font-size:12px;"></ph-plus></div></div>
       <div class="faq-a">We require a 20% deposit to begin work, with the remaining balance due upon delivery. We accept payments via bank transfer and major online payment methods.</div>
     </div>
   </div>
@@ -927,12 +927,12 @@ document.querySelectorAll('.faq-item').forEach(function(item){
     var isOpen=item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(function(other){
       other.classList.remove('open');
-      other.querySelector('.faq-icon').textContent='+';
+      other.querySelector('.faq-icon').innerHTML='<ph-plus weight="light" style="font-size:12px;"></ph-plus>';
       gsap.to(other.querySelector('.faq-a'),{height:0,paddingTop:0,duration:0.25,ease:'power2.inOut'});
     });
     if(!isOpen){
       item.classList.add('open');
-      icon.textContent='−';
+      icon.innerHTML='<ph-minus weight="light" style="font-size:12px;"></ph-minus>';
       gsap.set(answer,{height:'auto',paddingTop:'0.875rem'});
       var h=answer.offsetHeight;
       gsap.fromTo(answer,{height:0,paddingTop:0},{height:h,paddingTop:'0.875rem',duration:0.3,ease:'power2.out'});
