@@ -1156,7 +1156,6 @@ gsap.utils.toArray('.sec-eye,.sec-title,.cta-h,.contact-sub').forEach(function(e
 
 /* ── NAV 3D FLOAT ── */
 (function(){
-  if(window.innerWidth<=768)return;
   var nav=document.querySelector('nav');
   window.addEventListener('scroll',function(){
     nav.classList.toggle('scrolled',window.scrollY>60);
