@@ -634,7 +634,7 @@ nav.nav-ready{opacity:1;}
 .form-step.hidden{display:none;}
 .form-step.slide-out{opacity:0;transform:translateX(-24px);}
 .form-step.slide-in{opacity:0;transform:translateX(24px);}
-.step-nav{display:flex;gap:0.75rem;margin-top:0.625rem;}
+.step-nav{display:flex;gap:0.75rem;margin-top:0.625rem;} @media(max-width:768px){   .step-indicator{flex-wrap:wrap;gap:0.5rem;}   .step-track{min-width:80px;}   .contact-grid{grid-template-columns:1fr !important;}   .contact-right{padding:1.5rem 1.25rem !important;}   .form-row{grid-template-columns:1fr !important;}   .cc-wrap{width:110px !important;}   .btn-back{padding:0.9rem 1.25rem;font-size:0.85rem;}   #next-btn,#submit-btn{font-size:0.875rem;} } @media(max-width:480px){   .step-counter{font-size:0.65rem;}   .cc-wrap{width:100px !important;} }
 .btn-back{background:transparent;border:1px solid var(--border2);color:var(--muted);padding:0.9rem 1.5rem;font-size:0.9rem;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;border-radius:50px;cursor:pointer;transition:all 0.2s;flex-shrink:0;}
 .btn-back:hover{border-color:rgba(255,255,255,0.3);color:var(--text);}
 </style>
@@ -682,7 +682,7 @@ nav.nav-ready{opacity:1;}
           <input class="form-input" type="tel" id="f-wa" name="whatsapp_number" placeholder="(555) 000-0000" autocomplete="tel" style="flex:1;">
         </div>
       </div>
-      <button type="button" class="form-submit" id="next-btn" onclick="goToStep2()">Next — Tell Us About Your Business →</button>
+      <button type="button" class="form-submit" id="next-btn" onclick="goToStep2()">Next Step →</button>
     </div>
 
     <!-- Step 2 — Business info -->
